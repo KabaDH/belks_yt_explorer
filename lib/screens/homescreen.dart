@@ -15,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  final String channelId = 'UC6Dy0rQ6zDnQuHQ1EeErGUA';
+  late final String channelId = 'UCjzHeG1KWoonmf9d5KBvSiw';
   late List<String> favoriteChannelsID;
   List<Channel> favoriteChannels = [];
   late String defChannelId;
@@ -42,12 +42,12 @@ class HomeScreenState extends State<HomeScreen> {
     final SharedPreferences prefs = await _prefs;
     prefs.containsKey('defChannelId')
         ? _defChannelId = prefs.getString('defChannelId')!
-        : _defChannelId = channelId;
+        : _defChannelId = 'UCjzHeG1KWoonmf9d5KBvSiw';
     //проверяем сохраненные каналы
     List<String> _favoriteChannelsID;
     prefs.containsKey('favoriteChannelsID')
         ? _favoriteChannelsID = prefs.getStringList('favoriteChannelsID')!
-        : _favoriteChannelsID = [];
+        : _favoriteChannelsID = ['UCjzHeG1KWoonmf9d5KBvSiw'];
     //инициализируем каналы
     List<Channel> _favoriteChannels = [];
 
