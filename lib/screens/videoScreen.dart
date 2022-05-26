@@ -20,38 +20,33 @@ class VideoScreenState extends State<VideoScreen> {
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = YoutubePlayerController(
         initialVideoId: widget.id,
-        flags: YoutubePlayerFlags(autoPlay: false, mute: false));
+        flags: const YoutubePlayerFlags(autoPlay: false, mute: false));
   }
 
   @override
   Widget build(BuildContext context) {
     Orientation _deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Theme.of(context).primaryColor,
-      //   leading: IconButton(
-      //       icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-      //       onPressed: () => Navigator.of(context).pop()),
-      // ),
-      bottomSheet: _deviceOrientation == Orientation.portrait
+      floatingActionButton: _deviceOrientation == Orientation.portrait
           ? Container(
-              width: double.infinity,
-              height: 45,
+              margin: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(left: 5),
               decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(45),
-                      topRight: Radius.circular(45))),
+                shape: BoxShape.circle,
+                color: Theme.of(context).primaryColor,
+              ),
+              width: 60,
+              height: 60,
               child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                   onPressed: () => {
-                        SystemChrome.setEnabledSystemUIOverlays(
-                            SystemUiOverlay.values),
+                        SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+                            overlays: SystemUiOverlay.values),
                         Navigator.of(context).pop()
                       }),
             )
           : null,
-
       body: Center(
         child: YoutubePlayer(
           controller: _controller,

@@ -12,6 +12,8 @@ class APIService {
   final String _baseUrl = 'www.googleapis.com';
   String _nextPageToken = '';
   String _lastPlayListId = '';
+  String _lastSearchRequest = '';
+  String _nextPageTokenSearch = '';
 
   Future<Channel> fetchChannel({required String channelId}) async {
     Map<String, String> parameters = {
@@ -89,6 +91,51 @@ class APIService {
             Video.fromMap(json['snippet']),
           ));
       return videos;
+    } else {
+      throw json.decode(response.body)['error']['message'];
+    }
+  }
+
+  //Search for the channel
+  Future<List<SearchChannel>> fetchSearchResults(
+      {required String searchRequest}) async {
+    Map<String, String> parameters = {
+      'part': 'snippet',
+      'q': searchRequest,
+      'type': 'channel',
+      'maxResults': '5',
+      'pageToken': _nextPageTokenSearch,
+      'key': API_KEY,
+    };
+
+    Uri uri = Uri.https(
+      _baseUrl,
+      '/youtube/v3/search',
+      parameters,
+    );
+
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
+    ///Get Playlist Videos
+    if (!(_lastSearchRequest == searchRequest) || _lastSearchRequest == '') {
+      _nextPageTokenSearch = '';
+    }
+    var response = await http.get(uri, headers: headers);
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      _lastSearchRequest = searchRequest;
+      _nextPageTokenSearch = data['nextPageToken'] ?? '';
+      List<dynamic> searchJson = data['items'];
+
+      ///Fetch first eight videos from uploads playlist
+      List<SearchChannel> channels = [];
+
+      searchJson.forEach((json) => channels.add(
+            SearchChannel.fromMap(json['snippet']),
+          ));
+      return channels;
     } else {
       throw json.decode(response.body)['error']['message'];
     }

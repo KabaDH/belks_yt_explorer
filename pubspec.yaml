@@ -44,12 +44,12 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
-  cupertino_icons: ^1.0.2
-  http: 0.13.3
-  youtube_player_flutter: 8.0.0
-  shared_preferences: ^2.0.6
-  flutter_native_splash: 1.2.0
+  flutter_lints: ^2.0.1
+  cupertino_icons: ^1.0.4
+  http: ^0.13.4
+  youtube_player_flutter: ^8.1.0
+  shared_preferences: ^2.0.15
+  flutter_native_splash: ^2.2.1
   intl: ^0.17.0
 
 flutter_native_splash:
