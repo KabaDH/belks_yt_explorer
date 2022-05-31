@@ -1,9 +1,11 @@
 import 'dart:io' show Platform;
-import 'package:belks_yt_explorer/screens/homescreen.dart';
+import 'package:belks_tube/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:belks_yt_explorer/widgets/widgets.dart';
+import 'package:belks_tube/widgets/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:belks_tube/services/styles.dart';
 
 class PrivacyScreen extends StatelessWidget {
   final bool acceptedPrivacy;
@@ -16,27 +18,28 @@ class PrivacyScreen extends StatelessWidget {
     prefs.setBool('PrivatePolicyAccepted', true);
   }
 
+  //For url_launcher
+  String? encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map((e) =>
+            '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .join('&');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'io.levk@gmail.com',
+      query: encodeQueryParameters(
+          <String, String>{'subject': 'Question about Belk`s Tube'}),
+    );
+
+    final Uri googleSecuritySettings =
+        Uri.parse('https://security.google.com/settings/security/permissions');
+
     return Scaffold(
-      floatingActionButton: Container(
-        margin: const EdgeInsets.only(right: 20),
-        padding: const EdgeInsets.only(left: 5),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Theme.of(context).primaryColor,
-        ),
-        width: 60,
-        height: 60,
-        child: IconButton(
-            padding: EdgeInsets.zero,
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => {
-                  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-                      overlays: SystemUiOverlay.values),
-                  Navigator.of(context).pop()
-                }),
-      ),
+      floatingActionButton: floatingActionButton(context),
       body: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(
@@ -103,7 +106,69 @@ class PrivacyScreen extends StatelessWidget {
               'We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.'),
           header('Contact Us'),
           paragraf(
-              'If you have any questions about this Privacy Policy, You can contact us:\nBy email: io.levk@gmail.com'),
+              'If you have any questions about this Privacy Policy, You can contact us:',
+              noSpace: true),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            sliver: SliverToBoxAdapter(
+              child: Row(
+                children: [
+                  const Text(
+                    'By email: ',
+                    style: Styles.bodyTextStyle,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      if (await canLaunchUrl(emailLaunchUri)) {
+                        launchUrl(
+                          emailLaunchUri,
+                        );
+                      } else {
+                        throw 'Can`t load url';
+                      }
+                    },
+                    child: const Text(
+                      'io.levk@gmail.com',
+                      style: Styles.hyperLinkStyle,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Divider(
+              height: 8.0,
+              thickness: 4.0,
+            ),
+          ),
+          paragraf('You can also vizit:', noSpace: true),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            sliver: SliverToBoxAdapter(
+              child: GestureDetector(
+                onTap: () async {
+                  if (await canLaunchUrl(googleSecuritySettings)) {
+                    launchUrl(
+                      googleSecuritySettings,
+                    );
+                  } else {
+                    throw 'Can`t load url';
+                  }
+                },
+                child: const Text(
+                  'Google\'s security settings page',
+                  style: Styles.hyperLinkStyle,
+                ),
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Divider(
+              height: 8.0,
+              thickness: 4.0,
+            ),
+          ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             sliver: SliverToBoxAdapter(

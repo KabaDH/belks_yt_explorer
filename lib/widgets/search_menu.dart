@@ -1,4 +1,4 @@
-import 'package:belks_yt_explorer/models/models.dart';
+import 'package:belks_tube/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

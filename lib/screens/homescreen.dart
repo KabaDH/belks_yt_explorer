@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:belks_yt_explorer/models/models.dart';
+import 'package:belks_tube/models/models.dart';
 import 'screens.dart';
-import 'package:belks_yt_explorer/services/api_services.dart';
-import 'package:belks_yt_explorer/widgets/widgets.dart';
+import 'package:belks_tube/services/api_services.dart';
 import 'package:intl/intl.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,11 +27,18 @@ class HomeScreenState extends State<HomeScreen> {
   bool _favChannelsLoading = true;
   List<SearchChannel> searchChannels = []; //отображение каналов поиска
   TextEditingController textSearchController = TextEditingController();
+  late PackageInfo packageInfo;
 
   @override
   void initState() {
     super.initState();
     _initChannel();
+    _getVersionInfo();
+  }
+
+  _getVersionInfo() async {
+    PackageInfo _packageInfo = await PackageInfo.fromPlatform();
+    packageInfo = _packageInfo;
   }
 
   _initChannel() async {
@@ -522,8 +529,13 @@ class HomeScreenState extends State<HomeScreen> {
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => PrivacyScreen(acceptedPrivacy: true))),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => InfoScreen(
+                          appBuild: packageInfo.buildNumber,
+                          appVersion: packageInfo.version,
+                        )));
+              },
               icon: const Icon(Icons.info_outline))
         ],
         title: _isLoading

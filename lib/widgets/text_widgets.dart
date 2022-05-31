@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-paragraf(String text) {
+paragraf(String text, {bool noSpace = false}) {
   return SliverPadding(
     padding: const EdgeInsets.symmetric(horizontal: 15.0),
     sliver: SliverToBoxAdapter(
       child: Text(
-        '$text\n',
+        noSpace ? text : '$text\n',
         textAlign: TextAlign.justify,
         style: const TextStyle(
             fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w300),
