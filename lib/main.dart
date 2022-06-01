@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 ///For the lunch icon thanks to https://icons8.com/
+//color #FF0000 padding 20%
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

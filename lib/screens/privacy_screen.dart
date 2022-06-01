@@ -39,7 +39,7 @@ class PrivacyScreen extends StatelessWidget {
         Uri.parse('https://security.google.com/settings/security/permissions');
 
     return Scaffold(
-      floatingActionButton: floatingActionButton(context),
+      floatingActionButton: acceptedPrivacy ? floatingActionButton(context) : null,
       body: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(
