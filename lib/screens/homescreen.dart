@@ -5,6 +5,7 @@ import 'screens.dart';
 import 'package:belks_tube/services/api_services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -86,10 +87,15 @@ class HomeScreenState extends State<HomeScreen> {
   _videosBuilder(Video video) {
     DateTime _posted = DateTime.parse(video.publishedAt).toLocal();
     String _postedDate = DateFormat('dd/MM/yyyy HH:mm').format(_posted);
+    Uri _ytVideoUrl = Uri.parse('https://www.youtube.com/watch?v=${video.id}');
 
     return GestureDetector(
-      onTap: () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (_) => VideoScreen(id: video.id))),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => VideoScreen(
+                  id: video.id,
+                )));
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         padding: const EdgeInsets.all(10),
@@ -100,11 +106,28 @@ class HomeScreenState extends State<HomeScreen> {
         ]),
         child: Row(
           children: [
-            Image.network(
-              video.thumbnailUrl,
-              width: 170,
-              height: 130,
-            ),
+            Stack(children: [
+              Image.network(
+                video.thumbnailUrl,
+                width: 170,
+                height: 130,
+              ),
+              Positioned(
+                left: 0,
+                bottom: -10.0,
+                child: IconButton(
+                    onPressed: () async {
+                      if (await canLaunchUrl(_ytVideoUrl)) {
+                        launchUrl(
+                          _ytVideoUrl,
+                        );
+                      } else {
+                        throw 'Can`t load url';
+                      }
+                    },
+                    icon: Image.asset('assets/youtube_social_icon_red.png', width: 20, height: 20,)),
+              )
+            ]),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

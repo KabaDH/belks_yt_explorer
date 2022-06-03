@@ -9,7 +9,8 @@ class Video {
       {required this.id,
       required this.title,
       required this.thumbnailUrl,
-      required this.channelTitle, required this.publishedAt});
+      required this.channelTitle, required this.publishedAt,
+      });
 
   factory Video.fromMap(Map<String, dynamic> snippet) {
     return Video(
@@ -17,7 +18,7 @@ class Video {
       title: snippet['title'],
       thumbnailUrl: snippet['thumbnails']['high']['url'],
       channelTitle: snippet['channelTitle'],
-      publishedAt: snippet['publishedAt'].toString()
+      publishedAt: snippet['publishedAt'].toString(),
     );
   }
 }
