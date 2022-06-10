@@ -1,3 +1,4 @@
+import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:belks_tube/models/models.dart';
@@ -125,7 +126,11 @@ class HomeScreenState extends State<HomeScreen> {
                         throw 'Can`t load url';
                       }
                     },
-                    icon: Image.asset('assets/youtube_social_icon_red.png', width: 20, height: 20,)),
+                    icon: Image.asset(
+                      'assets/youtube_social_icon_red.png',
+                      width: 20,
+                      height: 20,
+                    )),
               )
             ]),
             Expanded(
@@ -210,16 +215,8 @@ class HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(60),
-                        child: Image(
-                          image: NetworkImage(
-                              favoriteChannels[index].profilePictureUrl),
-                          width: 60,
-                          height: 60,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      buildProfileImg(
+                          favoriteChannels[index].profilePictureUrl),
                       const SizedBox(
                         width: 7,
                       ),
@@ -481,16 +478,8 @@ class HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(60),
-                            child: Image(
-                              image: NetworkImage(
-                                  searchChannels[index].profilePictureUrl),
-                              width: 60,
-                              height: 60,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          buildProfileImg(
+                              searchChannels[index].profilePictureUrl),
                           const SizedBox(
                             width: 7,
                           ),
@@ -568,12 +557,23 @@ class HomeScreenState extends State<HomeScreen> {
               )
             : ListTile(
                 leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image(
-                    image: NetworkImage(_channel.profilePictureUrl),
-                    height: 50,
-                    width: 50,
-                  ),
+                  borderRadius:
+                      _channel.profilePictureUrl.contains('yt3.ggpht.com')
+                          ? BorderRadius.zero
+                          : BorderRadius.circular(50),
+                  //yt3.ggpht.com is blocked in Russia
+                  child: _channel.profilePictureUrl.contains('yt3.ggpht.com')
+                      ? Image.asset(
+                          'assets/na.png',
+                          height: 50,
+                          width: 50,
+                        )
+                      : Image(
+                          image: NetworkImage(_channel.profilePictureUrl),
+                          // Image.asset('assets\na.png')
+                          height: 50,
+                          width: 50,
+                        ),
                 ),
                 title: Text(
                   _channel.title,

@@ -1,4 +1,5 @@
 # Miscellaneous
+*.jks
 *.class
 *.log
 *.pyc
@@ -45,5 +46,10 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-lib/utilites/keys.dart
+
+
+#My files
+/android/key.properties
+/android/app/upload-keystore.jks
+/lib/utilites/keys.dart
 /android/app/google-services.json

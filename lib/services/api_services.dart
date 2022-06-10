@@ -118,7 +118,7 @@ class APIService {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
 
-    ///Get Playlist Videos
+    //Get Playlist Videos
     if (!(_lastSearchRequest == searchRequest) || _lastSearchRequest == '') {
       _nextPageTokenSearch = '';
     }
@@ -129,7 +129,7 @@ class APIService {
       _nextPageTokenSearch = data['nextPageToken'] ?? '';
       List<dynamic> searchJson = data['items'];
 
-      ///Fetch first eight videos from uploads playlist
+      //Fetch first eight videos from uploads playlist
       List<SearchChannel> channels = [];
 
       searchJson.forEach((json) => channels.add(
@@ -161,7 +161,7 @@ class APIService {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
 
-    ///Get Channel
+    //Get Channel
     var _response = await http.get(uri, headers: headers);
 
     _pong = json.decode(_response.body)['pageInfo']['totalResults'];
