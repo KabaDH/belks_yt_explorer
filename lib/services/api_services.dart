@@ -54,7 +54,21 @@ class APIService {
   }
 
   Future<List<Video>> fetchVideosFromPlayList(
-      {required String playListId}) async {
+      {required String playListId, bool resetToken = false}) async {
+    Map<String, String> headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
+    //Get Playlist Videos
+    //Порядок задания переменных имеет значение. если до этой функции задать
+    //parameters, изменение _nextPageToken здесь уже ни на что не влияет
+    if (!(_lastPlayListId == playListId) ||
+        _lastPlayListId == '' ||
+        resetToken) {
+      _nextPageToken = '';
+    }
+
+
     Map<String, String> parameters = {
       'part': 'snippet',
       'playlistId': playListId,
@@ -62,21 +76,12 @@ class APIService {
       'pageToken': _nextPageToken,
       'key': API_KEY,
     };
-
     Uri uri = Uri.https(
       _baseUrl,
       '/youtube/v3/playlistItems',
       parameters,
     );
 
-    Map<String, String> headers = {
-      HttpHeaders.contentTypeHeader: 'application/json',
-    };
-
-    ///Get Playlist Videos
-    if (!(_lastPlayListId == playListId) || _lastPlayListId == '') {
-      _nextPageToken = '';
-    }
     var response = await http.get(uri, headers: headers);
     if (response.statusCode == 200) {
       var data = json.decode(response.body);

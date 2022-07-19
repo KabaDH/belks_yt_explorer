@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/screens.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,17 +24,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.green,
-        scaffoldBackgroundColor: Colors.green.shade100,
+    return ProviderScope(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.green,
+          scaffoldBackgroundColor: Colors.green.shade100,
+        ),
+        home: acceptedPrivacy
+            ? HomeScreen()
+            : PrivacyScreen(
+                acceptedPrivacy: acceptedPrivacy,
+              ),
       ),
-      home: acceptedPrivacy
-          ? HomeScreen()
-          : PrivacyScreen(
-              acceptedPrivacy: acceptedPrivacy,
-            ),
     );
   }
 }
