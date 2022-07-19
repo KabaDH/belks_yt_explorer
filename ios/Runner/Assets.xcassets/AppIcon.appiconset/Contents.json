@@ -181,6 +181,7 @@
       "size" : "29x29"
     },
     {
+      "filename" : "66x66.jpeg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -204,6 +205,7 @@
       "subtype" : "40mm"
     },
     {
+      "filename" : "92x92.jpeg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -219,6 +221,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "102x102.jpeg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -250,6 +253,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "234x234.jpeg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",

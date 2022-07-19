@@ -15,7 +15,8 @@ class HomeScreen extends StatefulWidget {
   HomeScreenState createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late final String channelId = 'UCjzHeG1KWoonmf9d5KBvSiw';
   late List<String> favoriteChannelsID;
   List<Channel> favoriteChannels = [];
@@ -30,12 +31,27 @@ class HomeScreenState extends State<HomeScreen> {
   List<SearchChannel> searchChannels = []; //отображение каналов поиска
   TextEditingController textSearchController = TextEditingController();
   late PackageInfo packageInfo;
+  late AnimationController animationController;
 
   @override
   void initState() {
     super.initState();
+    animationController = AnimationController(
+            vsync: this, duration: const Duration(seconds: 2))
+          ..repeat()
+        // ..addListener(() { // Не требуется, т.к. AnimatedWidget
+        //   setState(() {}); // перерисовывается сам, а других элементов, зависящих
+        // })                 // от контроллера у нас нет
+        ;
     _initChannel();
     _getVersionInfo();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+    textSearchController.dispose();
   }
 
   _getVersionInfo() async {
@@ -141,7 +157,7 @@ class HomeScreenState extends State<HomeScreen> {
                   Text(
                     video.title,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 5,
+                    maxLines: 4,
                     style: const TextStyle(
                         fontWeight: FontWeight.w500, fontSize: 16),
                   ),
@@ -166,11 +182,19 @@ class HomeScreenState extends State<HomeScreen> {
         .fetchVideosFromPlayList(playListId: _channel.uploadPlaylistId);
     setState(() {
       _channel.videos!.addAll(moreVideos);
-      // moreVideos.forEach((video) {
-      //   _channel.videos!.add(video);
-      // });
     });
     _needMoreVideos = false;
+  }
+
+  _updateVideosList() async {
+    setState(() => _isLoading = true);
+    List<Video> updatedVideos = await APIService.instance
+        .fetchVideosFromPlayList(
+            playListId: _channel.uploadPlaylistId, resetToken: true);
+    setState(() {
+      _channel.videos = updatedVideos;
+      _isLoading = false;
+    });
   }
 
   _loadMoreSearchResults() async {
@@ -181,88 +205,102 @@ class HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  //Безопасная заглушка, если видео не прогрузились (или нет видео) не показываем когда вышло последнее видео
+  String _lastUpdatedVideo(int index) {
+    try {
+      String lastVideoTime =
+          'Updated ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(favoriteChannels[index].videos![0].publishedAt).toLocal())}';
+      return lastVideoTime;
+    } catch (e) {
+      return '';
+    }
+  }
+
 //элементы drawer
   _buildFavorites() {
     return Expanded(
       child: Container(
         color: Theme.of(context).primaryColor,
-        child: ListView.builder(
-            itemCount: favoriteChannels.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _channel = favoriteChannels[index];
-                  });
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 80,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(80),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                            blurRadius: 3)
-                      ]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      buildProfileImg(
-                          favoriteChannels[index].profilePictureUrl),
-                      const SizedBox(
-                        width: 7,
-                      ),
-                      Expanded(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+        child: favoriteChannels.isEmpty
+            ? const SizedBox.shrink()
+            : ListView.builder(
+                itemCount: favoriteChannels.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _channel = favoriteChannels[index];
+                      });
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 80,
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(80),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(0, 2),
+                                blurRadius: 3)
+                          ]),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            favoriteChannels[index].title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                shadows: [
-                                  Shadow(
-                                      color: Colors.black26,
-                                      offset: Offset(0, 2),
-                                      blurRadius: 2)
-                                ]),
+                          BuildProfileImg(
+                              imgUrl: favoriteChannels[index].profilePictureUrl,
+                              size: 60),
+                          const SizedBox(
+                            width: 7,
                           ),
-                          Text(
-                            'Updated ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(favoriteChannels[index].videos![0].publishedAt).toLocal())}',
-                            style: TextStyle(
-                                color: Colors.grey[400], fontSize: 12),
-                          )
+                          Expanded(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                favoriteChannels[index].title,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [
+                                      Shadow(
+                                          color: Colors.black26,
+                                          offset: Offset(0, 2),
+                                          blurRadius: 2)
+                                    ]),
+                              ),
+                              Text(
+                                _lastUpdatedVideo(index),
+                                style: TextStyle(
+                                    color: Colors.grey[400], fontSize: 12),
+                              )
+                            ],
+                          )),
+                          const SizedBox(
+                            width: 7,
+                          ),
+                          IconButton(
+                              onPressed: () =>
+                                  _removeDialog(favoriteChannels[index]),
+                              icon: const Icon(
+                                Icons.cancel,
+                                size: 30,
+                                color: Colors.black54,
+                              ))
                         ],
-                      )),
-                      const SizedBox(
-                        width: 7,
                       ),
-                      IconButton(
-                          onPressed: () =>
-                              _removeDialog(favoriteChannels[index]),
-                          icon: const Icon(
-                            Icons.cancel,
-                            size: 30,
-                            color: Colors.black54,
-                          ))
-                    ],
-                  ),
-                ),
-              );
-            }),
+                    ),
+                  );
+                }),
       ),
     );
   }
@@ -431,23 +469,23 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   _buildSearchElements() {
-    return Visibility(
-      visible: searchChannels.isNotEmpty,
-      child: Expanded(
-        child: Container(
-          height: 360.0,
-          decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              border: const Border(bottom: BorderSide(color: Colors.black26))),
-          child: NotificationListener<ScrollEndNotification>(
-            onNotification: (scrollDetails) {
-              if (scrollDetails.metrics.pixels ==
-                  scrollDetails.metrics.maxScrollExtent) {
-                _loadMoreSearchResults();
-              }
-              return false;
-            },
-            child: ListView.builder(
+    return AnimatedContainer(
+      height: searchChannels.isEmpty ? 0 : 360.0,
+      duration: const Duration(milliseconds: 500),
+      decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor.withGreen(212),
+          border: const Border(bottom: BorderSide(color: Colors.black26))),
+      child: NotificationListener<ScrollEndNotification>(
+        onNotification: (scrollDetails) {
+          if (scrollDetails.metrics.pixels ==
+              scrollDetails.metrics.maxScrollExtent) {
+            _loadMoreSearchResults();
+          }
+          return false;
+        },
+        child: searchChannels.isEmpty
+            ? const SizedBox.shrink()
+            : ListView.builder(
                 itemCount: searchChannels.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
@@ -478,8 +516,10 @@ class HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          buildProfileImg(
-                              searchChannels[index].profilePictureUrl),
+                          BuildProfileImg(
+                            imgUrl: searchChannels[index].profilePictureUrl,
+                            size: 60,
+                          ),
                           const SizedBox(
                             width: 7,
                           ),
@@ -527,8 +567,6 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 }),
-          ),
-        ),
       ),
     );
   }
@@ -556,25 +594,8 @@ class HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(color: Colors.white, fontSize: 16),
               )
             : ListTile(
-                leading: ClipRRect(
-                  borderRadius:
-                      _channel.profilePictureUrl.contains('yt3.ggpht.com')
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(50),
-                  //yt3.ggpht.com is blocked in Russia
-                  child: _channel.profilePictureUrl.contains('yt3.ggpht.com')
-                      ? Image.asset(
-                          'assets/na.png',
-                          height: 50,
-                          width: 50,
-                        )
-                      : Image(
-                          image: NetworkImage(_channel.profilePictureUrl),
-                          // Image.asset('assets\na.png')
-                          height: 50,
-                          width: 50,
-                        ),
-                ),
+                leading: BuildProfileImg(
+                    imgUrl: _channel.profilePictureUrl, size: 50),
                 title: Text(
                   _channel.title,
                   style: const TextStyle(
@@ -604,36 +625,56 @@ class HomeScreenState extends State<HomeScreen> {
       ),
       body: _isLoading
           ? Center(
-              child: CircularProgressIndicator(
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+              child: ShowBelksProgressIndicator(
+              animationController: animationController
+                ..reset()
+                ..forward()
+                ..repeat(),
             ))
-          : NotificationListener<ScrollNotification>(
-              onNotification: (ScrollNotification scrollDetails) {
-                if (!_needMoreVideos &&
-                    _channel.videos!.length != int.parse(_channel.videoCount) &&
-                    scrollDetails.metrics.pixels ==
-                        scrollDetails.metrics.maxScrollExtent) {
-                  _loadMoreVideos();
-                }
-                return false;
-              },
-              child: ListView.builder(
-                  itemCount: _channel.videos!.length,
-                  itemBuilder: (context, index) {
-                    Video video = _channel.videos![index];
-                    return _videosBuilder(video);
-                  }),
+          : RefreshIndicator(
+              onRefresh: () => _updateVideosList(),
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (ScrollNotification scrollDetails) {
+                  if (!_needMoreVideos &&
+                      _channel.videos!.length !=
+                          int.parse(_channel.videoCount) &&
+                      scrollDetails.metrics.pixels ==
+                          scrollDetails.metrics.maxScrollExtent) {
+                    _loadMoreVideos();
+                  }
+                  return false;
+                },
+                child: ListView.builder(
+                    itemCount: _channel.videos!.length,
+                    itemBuilder: (context, index) {
+                      Video video = _channel.videos![index];
+                      return _videosBuilder(video);
+                    }),
+              ),
             ),
       drawer: favoriteChannels.isEmpty
-          ? Center(
-              child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                _menuAddFavSearch(),
-                _buildSearchElements(),
-              ],
-            ))
+          ? GestureDetector(
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(40),
+                    bottomRight: Radius.circular(40)),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.63,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      _menuAddFavSearch(),
+                      _buildSearchElements(),
+                    ],
+                  ),
+                ),
+              ),
+            )
           : GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
               child: ClipRRect(
@@ -648,9 +689,11 @@ class HomeScreenState extends State<HomeScreen> {
                   ),
                   child: _favChannelsLoading
                       ? Center(
-                          child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              Theme.of(context).primaryColor),
+                          child: ShowBelksProgressIndicator(
+                          animationController: animationController
+                            ..reset()
+                            ..forward()
+                            ..repeat(),
                         ))
                       : Column(
                           children: [
