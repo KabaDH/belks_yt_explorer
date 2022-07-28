@@ -69,7 +69,8 @@ class _SearchMenuElement extends State<SearchMenuElement> {
                 ),
                 Text(
                   widget.channel.description,
-                  style: TextStyle(color: Colors.grey[400], fontSize: 12),
+                  maxLines: 2,
+                  style: TextStyle(color: Colors.grey[400], fontSize: 12,),
                 )
               ],
             )),

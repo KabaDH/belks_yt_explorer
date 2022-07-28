@@ -32,6 +32,7 @@ class HomeScreenState extends State<HomeScreen>
   TextEditingController textSearchController = TextEditingController();
   late PackageInfo packageInfo;
   late AnimationController animationController;
+  double _logoOpacity = 1.0;
 
   @override
   void initState() {
@@ -45,6 +46,7 @@ class HomeScreenState extends State<HomeScreen>
         ;
     _initChannel();
     _getVersionInfo();
+    _setLogoOpacity();
   }
 
   @override
@@ -52,6 +54,17 @@ class HomeScreenState extends State<HomeScreen>
     super.dispose();
     animationController.dispose();
     textSearchController.dispose();
+  }
+
+  //Hide logo after we have loaded the screen
+  Future<void> _setLogoOpacity() async {
+    double newOpacity =
+        await Future.delayed(const Duration(milliseconds: 1), () {
+      return 0.0;
+    });
+    setState(() {
+      _logoOpacity = newOpacity;
+    });
   }
 
   _getVersionInfo() async {
@@ -132,21 +145,25 @@ class HomeScreenState extends State<HomeScreen>
               Positioned(
                 left: 0,
                 bottom: -10.0,
-                child: IconButton(
-                    onPressed: () async {
-                      if (await canLaunchUrl(_ytVideoUrl)) {
-                        launchUrl(
-                          _ytVideoUrl,
-                        );
-                      } else {
-                        throw 'Can`t load url';
-                      }
-                    },
-                    icon: Image.asset(
-                      'assets/youtube_social_icon_red.png',
-                      width: 20,
-                      height: 20,
-                    )),
+                child: AnimatedOpacity(
+                  duration: const Duration(seconds: 3),
+                  opacity: _logoOpacity,
+                  child: IconButton(
+                      onPressed: () async {
+                        if (await canLaunchUrl(_ytVideoUrl)) {
+                          launchUrl(
+                            _ytVideoUrl,
+                          );
+                        } else {
+                          throw 'Can`t load url';
+                        }
+                      },
+                      icon: Image.asset(
+                        'assets/youtube_social_icon_red.png',
+                        width: 20,
+                        height: 20,
+                      )),
+                ),
               )
             ]),
             Expanded(
@@ -194,6 +211,9 @@ class HomeScreenState extends State<HomeScreen>
     setState(() {
       _channel.videos = updatedVideos;
       _isLoading = false;
+      // dont forget show and hide tube logo
+      _logoOpacity = 1.0;
+      _setLogoOpacity();
     });
   }
 
