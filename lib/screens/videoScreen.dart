@@ -17,6 +17,7 @@ class VideoScreen extends StatefulWidget {
 
 class VideoScreenState extends State<VideoScreen> {
   late YoutubePlayerController _controller;
+  double _logoOpacity = 1.0;
 
   @override
   void initState() {
@@ -25,6 +26,18 @@ class VideoScreenState extends State<VideoScreen> {
     _controller = YoutubePlayerController(
         initialVideoId: widget.id,
         flags: const YoutubePlayerFlags(autoPlay: false, mute: false));
+    _setLogoOpacity();
+  }
+
+  //Hide logo after we have loaded the screen
+  Future<void> _setLogoOpacity() async {
+    double newOpacity =
+        await Future.delayed(const Duration(milliseconds: 1), () {
+      return 0.0;
+    });
+    setState(() {
+      _logoOpacity = newOpacity;
+    });
   }
 
   @override
@@ -48,24 +61,27 @@ class VideoScreenState extends State<VideoScreen> {
             child: Positioned(
                 left: 10,
                 bottom: 10,
-                child: GestureDetector(
-                  child: Image.asset(
-                    'assets/yt_logo_rgb_dark.png',
-                    width: 100,
-                    fit: BoxFit.cover,
+                child: AnimatedOpacity(
+                  duration: const Duration(seconds: 3),
+                  opacity: _logoOpacity,
+                  child: GestureDetector(
+                    child: Image.asset(
+                      'assets/yt_logo_rgb_dark.png',
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
+                    onTap: () async {
+                      if (await canLaunchUrl(ytVideoUrl)) {
+                        launchUrl(
+                          ytVideoUrl,
+                        );
+                      } else {
+                        throw 'Can`t load url';
+                      }
+                    },
                   ),
-                  onTap: () async {
-                    if (await canLaunchUrl(ytVideoUrl)) {
-                      launchUrl(
-                        ytVideoUrl,
-                      );
-                    } else {
-                      throw 'Can`t load url';
-                    }
-                  },
                 )),
           ),
-
         ]),
       ),
     );
