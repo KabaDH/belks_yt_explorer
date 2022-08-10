@@ -1,43 +1,57 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
-MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
+MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-48:12
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:video_player_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/aecdc7cff986d875cee201500af67307/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/0e00ccfbfc29cc00a357bbc5f73ca92a/webkit-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ed25ee0a9809a24053dcdf11a5b3bf9a/browser-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f09bbdc0f8e33cfccb2827b0cf8f6784/appcompat-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/623a56c3ad4dc3ee90ca904fb0658c4e/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6381aa16aa7b0c93f6ce0dbb38aa1181/jetified-exoplayer-hls-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a4cd97c31e38b0c986c75aa59aee3aca/jetified-exoplayer-dash-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a910354fd3acccfd7d50c57058356b8c/jetified-exoplayer-smoothstreaming-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/532ba231cc1b5e3e411a1abe8a19b99d/jetified-exoplayer-core-2.18.0/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:17:1-32:12
-MERGED from [androidx.fragment:fragment:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3194d3d8422dc9ed84a1be4def44686c/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4de91d5af50165bb438002b6d747a844/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f0374077ce5b9018abdda1046aa0761e/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33c68de81baf8e91d27220463146c579/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d09aa42216afc1b43de38cc46741b928/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.loader:loader:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/77e1cb64e9dde5ae5222965217f5d27f/loader-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.activity:activity:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3517f91b443ed463cfede7c33ef740e6/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/12ee1b989a991834fe166e72fedffb8a/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/95052661fe2fef1f5d616d63a52c94ab/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/c97bc024d4d83fa3c12124c555dd7fa6/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/2c545b82f5fe0521623771785fdbb6a4/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4b84403948a526aa8366fe63e29432f1/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df0364f253cd6bab5ea3da62d8cc12cd/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a17c9118aaf48a60aa9fa4997a13ed2f/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/fd707663bd7532515799526a3b89b7a4/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5aa9103bccff870acaf56408ae398e1d/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/267791d549d90fad5fded680f6abc8ad/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6ba045050b0ac72b32c2742f6a2a7bd1/lifecycle-runtime-2.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/e74d872f5334841d6e086b1153bd07e6/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5352d60c6e659f507288fd0a78543bec/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61750edef3fdec1c194918e2349217fc/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f503fbbf7970d457978e35e7d373dcfa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/1182937b2344f55765773f4caf0ce456/jetified-exoplayer-datasource-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/7f40f56e79fce91126c7a5040b766f3f/jetified-exoplayer-extractor-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-decoder:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ebaabf1b9f6036ce3fcba2f873e1d019/jetified-exoplayer-decoder-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/474ff8e2c194316846a6220e56d67d7c/jetified-exoplayer-database-2.18.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/21fd7427caae0ba80271fb5e505a6938/jetified-exoplayer-common-2.18.0/AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61d113fc32caafe2a5d4fcb19b21c82c/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/836ff828d91583b60e899717cda8d3f0/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/b4b82115d2a05de05bf29244269aa4bd/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml:1:1-7:12
@@ -49,126 +63,120 @@ INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-65:12
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-61:12
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:11-69
-uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:3:5-78
-MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-78
-MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-78
-	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:3:22-75
-uses-permission#android.permission.FOREGROUND_SERVICE 
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:4:5-78
-	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:4:22-75
-uses-permission#android.permission.WAKE_LOCK
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:5:5-68
-	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:5:22-65
 application
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:6:5-46:19
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:3:4-42:19
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-46:19
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-46:19
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-12:19
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-12:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:24:5-30:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:7:9-36
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:4:9-36
 	android:icon
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:9:9-43
-	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:8:9-40
-activity#app.web.belks.MainActivity
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:10:9-39:20
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:5:9-43
+activity#app.web.belks.MainApplication
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:6:9-35:20
 	android:launchMode
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:13:13-43
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:9:13-43
 	android:hardwareAccelerated
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:16:13-47
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:12:13-47
 	android:windowSoftInputMode
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:17:13-55
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:13:13-55
 	android:exported
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:12:13-36
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:8:13-36
 	android:configChanges
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:15:13-163
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:11:13-163
 	android:theme
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:14:13-47
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:10:13-47
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:11:13-41
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:7:13-44
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:22:13-25:17
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:18:13-21:17
 	android:resource
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:24:15-52
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:20:15-52
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:23:15-70
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:19:15-70
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:31:13-34:17
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:27:13-30:17
 	android:resource
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:33:15-61
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:29:15-61
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:32:15-79
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:28:15-79
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:35:13-38:29
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:31:13-34:29
 action#android.intent.action.MAIN
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:36:17-68
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:32:17-68
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:36:25-66
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:37:17-76
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:33:17-76
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:37:27-74
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:33:27-74
 meta-data#flutterEmbedding
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:42:9-44:33
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:38:9-40:33
 	android:value
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:44:13-30
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:40:13-30
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:43:13-44
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:39:13-44
 uses-permission#android.permission.INTERNET
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:47:5-66
-MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:47:5-66
-MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:47:5-66
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:43:5-66
+MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:43:5-66
+MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:43:5-66
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:47:22-64
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:43:22-64
 queries
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:49:5-64:15
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:45:5-60:15
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-11:15
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-11:15
 intent#action:name:android.intent.action.VIEW+data:scheme:https
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:51:9-54:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:47:9-50:18
 action#android.intent.action.VIEW
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:52:13-65
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:48:13-65
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:52:21-62
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:48:21-62
 data
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:53:13-44
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:49:13-44
 	android:scheme
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:53:19-41
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:49:19-41
 intent#action:name:android.intent.action.VIEW+data:scheme:http
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:55:9-58:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:51:9-54:18
 intent#action:name:android.intent.action.SEND+data:mimeType:*/*
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:60:9-63:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:56:9-59:18
 action#android.intent.action.SEND
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:61:13-65
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:57:13-65
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:61:21-62
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:57:21-62
 uses-sdk
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -179,14 +187,20 @@ MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/aecdc7cff986d875cee201500af67307/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/aecdc7cff986d875cee201500af67307/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/0e00ccfbfc29cc00a357bbc5f73ca92a/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/0e00ccfbfc29cc00a357bbc5f73ca92a/webkit-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ed25ee0a9809a24053dcdf11a5b3bf9a/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ed25ee0a9809a24053dcdf11a5b3bf9a/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f09bbdc0f8e33cfccb2827b0cf8f6784/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f09bbdc0f8e33cfccb2827b0cf8f6784/appcompat-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/623a56c3ad4dc3ee90ca904fb0658c4e/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/623a56c3ad4dc3ee90ca904fb0658c4e/swiperefreshlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6381aa16aa7b0c93f6ce0dbb38aa1181/jetified-exoplayer-hls-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6381aa16aa7b0c93f6ce0dbb38aa1181/jetified-exoplayer-hls-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a4cd97c31e38b0c986c75aa59aee3aca/jetified-exoplayer-dash-2.18.0/AndroidManifest.xml:20:5-22:41
@@ -195,30 +209,54 @@ MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.0] /Use
 MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a910354fd3acccfd7d50c57058356b8c/jetified-exoplayer-smoothstreaming-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/532ba231cc1b5e3e411a1abe8a19b99d/jetified-exoplayer-core-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/532ba231cc1b5e3e411a1abe8a19b99d/jetified-exoplayer-core-2.18.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3194d3d8422dc9ed84a1be4def44686c/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3194d3d8422dc9ed84a1be4def44686c/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4de91d5af50165bb438002b6d747a844/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4de91d5af50165bb438002b6d747a844/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f0374077ce5b9018abdda1046aa0761e/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f0374077ce5b9018abdda1046aa0761e/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33c68de81baf8e91d27220463146c579/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33c68de81baf8e91d27220463146c579/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d09aa42216afc1b43de38cc46741b928/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d09aa42216afc1b43de38cc46741b928/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.loader:loader:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/77e1cb64e9dde5ae5222965217f5d27f/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/77e1cb64e9dde5ae5222965217f5d27f/loader-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3517f91b443ed463cfede7c33ef740e6/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/3517f91b443ed463cfede7c33ef740e6/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/12ee1b989a991834fe166e72fedffb8a/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/12ee1b989a991834fe166e72fedffb8a/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/95052661fe2fef1f5d616d63a52c94ab/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/95052661fe2fef1f5d616d63a52c94ab/jetified-appcompat-resources-1.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/c97bc024d4d83fa3c12124c555dd7fa6/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/c97bc024d4d83fa3c12124c555dd7fa6/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/2c545b82f5fe0521623771785fdbb6a4/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/2c545b82f5fe0521623771785fdbb6a4/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f489d503f409bd395fb9eaa392826a1a/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4b84403948a526aa8366fe63e29432f1/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/4b84403948a526aa8366fe63e29432f1/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df0364f253cd6bab5ea3da62d8cc12cd/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df0364f253cd6bab5ea3da62d8cc12cd/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a17c9118aaf48a60aa9fa4997a13ed2f/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/a17c9118aaf48a60aa9fa4997a13ed2f/customview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.7.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8acfdfabbea6efe861fb919c1ca861c4/core-1.7.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/fd707663bd7532515799526a3b89b7a4/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/fd707663bd7532515799526a3b89b7a4/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5aa9103bccff870acaf56408ae398e1d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5aa9103bccff870acaf56408ae398e1d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/8c804659f18a50abff9370d39720da2a/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/267791d549d90fad5fded680f6abc8ad/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/267791d549d90fad5fded680f6abc8ad/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6ba045050b0ac72b32c2742f6a2a7bd1/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/6ba045050b0ac72b32c2742f6a2a7bd1/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/e74d872f5334841d6e086b1153bd07e6/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/e74d872f5334841d6e086b1153bd07e6/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5352d60c6e659f507288fd0a78543bec/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/5352d60c6e659f507288fd0a78543bec/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61750edef3fdec1c194918e2349217fc/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61750edef3fdec1c194918e2349217fc/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f503fbbf7970d457978e35e7d373dcfa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f503fbbf7970d457978e35e7d373dcfa/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/1182937b2344f55765773f4caf0ce456/jetified-exoplayer-datasource-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-datasource:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/1182937b2344f55765773f4caf0ce456/jetified-exoplayer-datasource-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-extractor:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/7f40f56e79fce91126c7a5040b766f3f/jetified-exoplayer-extractor-2.18.0/AndroidManifest.xml:20:5-22:41
@@ -229,10 +267,6 @@ MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.0] /Users/inle
 MERGED from [com.google.android.exoplayer:exoplayer-database:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/474ff8e2c194316846a6220e56d67d7c/jetified-exoplayer-database-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/21fd7427caae0ba80271fb5e505a6938/jetified-exoplayer-common-2.18.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/21fd7427caae0ba80271fb5e505a6938/jetified-exoplayer-common-2.18.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/d95fa3ae29dd3f044aef1b8135620663/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61d113fc32caafe2a5d4fcb19b21c82c/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/61d113fc32caafe2a5d4fcb19b21c82c/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/836ff828d91583b60e899717cda8d3f0/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/836ff828d91583b60e899717cda8d3f0/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/b4b82115d2a05de05bf29244269aa4bd/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -245,6 +279,72 @@ INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src
 	android:minSdkVersion
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
+intent#action:name:android.support.customtabs.action.CustomTabsService
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-10:18
+action#android.support.customtabs.action.CustomTabsService
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-90
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:9:21-87
+activity#com.pichillilorenzo.flutter_inappwebview.in_app_browser.InAppBrowserActivity
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-18:47
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-36
+	android:configChanges
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-137
+	android:theme
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-44
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-104
+activity#com.pichillilorenzo.flutter_inappwebview.chrome_custom_tabs.ChromeCustomTabsActivity
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-22:55
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:21:13-36
+	android:theme
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-52
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-112
+activity#com.pichillilorenzo.flutter_inappwebview.chrome_custom_tabs.TrustedWebActivity
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:23:9-26:55
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:25:13-36
+	android:theme
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-52
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-106
+activity#com.pichillilorenzo.flutter_inappwebview.chrome_custom_tabs.ChromeCustomTabsActivitySingleInstance
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:27:9-31:55
+	android:launchMode
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-48
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-36
+	android:theme
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-52
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-126
+activity#com.pichillilorenzo.flutter_inappwebview.chrome_custom_tabs.TrustedWebActivitySingleInstance
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:32:9-36:55
+	android:launchMode
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:35:13-48
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:34:13-36
+	android:theme
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:36:13-52
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:33:13-120
+receiver#com.pichillilorenzo.flutter_inappwebview.chrome_custom_tabs.ActionBroadcastReceiver
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:38:9-41:40
+	android:enabled
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:40:13-35
+	android:exported
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:39:13-111
+meta-data#io.flutter.embedded_views_preview
+ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:43:9-45:36
+	android:value
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:45:13-33
+	android:name
+		ADDED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:44:13-61
 activity#io.flutter.plugins.urllauncher.WebViewActivity
 ADDED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
 	android:exported
@@ -253,6 +353,10 @@ ADDED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_exp
 		ADDED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-74
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-78
+	android:name
+		ADDED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-75
 uses-permission#android.permission.FOREGROUND_SERVICE
 ADDED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-77
 	android:name
@@ -279,13 +383,29 @@ MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.0] /Users/inlevk
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/21fd7427caae0ba80271fb5e505a6938/jetified-exoplayer-common-2.18.0/AndroidManifest.xml:24:5-79
 	android:name
 		ADDED from [com.google.android.exoplayer:exoplayer-core:2.18.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/532ba231cc1b5e3e411a1abe8a19b99d/jetified-exoplayer-core-2.18.0/AndroidManifest.xml:24:22-76
-provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/33dfa8dfb90b894e7471f8372aec3b3d/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:30:13-31
 	android:authorities
-		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
-	android:multiprocess
-		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
 	android:exported
-		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/df06f2f9f71184f1fb36e0399947316d/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/f40a4d6304a207c876feb290db2e2dff/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/ef7fcab8f8cab6d0d5f444d9a51fd85d/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78

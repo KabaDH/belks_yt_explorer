@@ -13,6 +13,7 @@ class VideoScreen extends StatefulWidget {
     required this.video,
   });
 
+  @override
   VideoScreenState createState() => VideoScreenState();
 }
 
