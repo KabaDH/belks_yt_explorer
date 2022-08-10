@@ -9,12 +9,12 @@ import 'dart:io';
 ///For the lunch icon thanks to https://icons8.com/
 //color #FF0000 padding 20%
 
-// @pragma('vm:entry-point')
-// void androidWindow() {
-//   if (Platform.isAndroid) {
-//     runApp(const AndroidWindowApp());
-//   }
-// }
+@pragma('vm:entry-point')
+void androidWindow() {
+  if (Platform.isAndroid) {
+    runApp(const AndroidWindowApp());
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

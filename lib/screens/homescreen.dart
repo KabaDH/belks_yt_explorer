@@ -666,9 +666,10 @@ class HomeScreenState extends State<HomeScreen>
                 },
                 child: ListView.builder(
                     itemCount: _channel.videos!.length,
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                     itemBuilder: (context, index) {
                       Video video = _channel.videos![index];
-                      return _videosBuilder(video);
+                      return VideosBuilder(video: video);
                     }),
               ),
             ),

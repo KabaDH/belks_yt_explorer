@@ -53,17 +53,17 @@ class _PopUpWindowState extends State<PopUpWindow> {
 
     _controller = PodPlayerController(
       playVideoFrom: PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
-      podPlayerConfig:  PodPlayerConfig(
-        autoPlay: true,
-        videoQualityPriority: [360,240, 720,1080],
+      podPlayerConfig: const PodPlayerConfig(
+        autoPlay: false,
+        videoQualityPriority: [360, 240, 720, 1080],
       ),
     )
       ..initialise()
       ..videoSeekTo(Duration(milliseconds: params['currentPosition']));
     setState(() => {
-      isLoading = false,
-      videoId = params['videoId'],
-    });
+          isLoading = false,
+          videoId = params['videoId'],
+        });
   }
 
   @override
@@ -83,6 +83,17 @@ class _PopUpWindowState extends State<PopUpWindow> {
     debugPrint('Halted = ${halted.toString()}');
   }
 
+  void _unHaltPopup() {
+    _controller.unMute();
+    _controller.play();
+    AndroidWindow.setPosition(0, 0);
+    AndroidWindow.resize(500, 280); //500, 280 = 30,30
+    setState(() {
+      halted = false;
+    });
+    debugPrint('Halted = ${halted.toString()}');
+  }
+
   @override
   Widget build(BuildContext context) {
     AndroidWindow.setHandler((name, data) async {
@@ -97,6 +108,43 @@ class _PopUpWindowState extends State<PopUpWindow> {
           }
         case 'get params':
           return _controller.currentVideoPosition.inMilliseconds;
+        case 'new params':
+          var params = jsonDecode(data.toString());
+          var newVideoId = params['videoId'];
+          var newVideoPosition = params['currentPosition'];
+          debugPrint('!!!!! NEW PARAMS $newVideoId and $newVideoPosition');
+          if (newVideoId == videoId) {
+            _controller
+              ..videoSeekTo(Duration(milliseconds: newVideoPosition))
+              ..play();
+            _unHaltPopup();
+
+            return 'new position $newVideoPosition done';
+          } else {
+            try {
+              final urls = await PodPlayerController.getYoutubeUrls(
+                'https://youtu.be/$newVideoId',
+              );
+              _controller
+                ..changeVideo(
+                  playVideoFrom:
+                      PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
+                  playerConfig: const PodPlayerConfig(
+                    autoPlay: true,
+                    videoQualityPriority: [360, 240, 720, 1080],
+                  ),
+                )
+                ..videoSeekTo(Duration(
+                    milliseconds: int.parse(params['currentPosition'])))
+                ..unMute()
+                ..play();
+              _unHaltPopup();
+              return "new video started";
+            } catch (e) {
+              return e.toString();
+            }
+          }
+
         case 'get videoId':
           return videoId;
         case 'set video timing':
@@ -124,7 +172,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
               halted = false;
             });
             debugPrint('Halted = ${halted.toString()}');
-            return "halted";
+            return "Unhalted";
           } catch (e) {
             return e.toString();
           }
@@ -146,9 +194,9 @@ class _PopUpWindowState extends State<PopUpWindow> {
               ..changeVideo(
                 playVideoFrom:
                     PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
-                playerConfig: PodPlayerConfig(
+                playerConfig: const PodPlayerConfig(
                   autoPlay: true,
-                  videoQualityPriority: [360,240, 720,1080],
+                  videoQualityPriority: [360, 240, 720, 1080],
                 ),
               )
               ..videoSeekTo(
@@ -167,7 +215,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
 
     return AndroidWindow(
       child: Opacity(
-        opacity: (halted) ? 0.0 : 1.0,
+        opacity: (halted) ? 0.5 : 1.0,
         child: IgnorePointer(
           ignoring: halted,
           child: Scaffold(

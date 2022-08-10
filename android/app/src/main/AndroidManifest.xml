@@ -1,10 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.web.belks">
    <application
-        android:label="Belk`s Tube"
-        android:icon="@mipmap/ic_launcher">
+       android:label="Belk`s Tube"
+       android:name=".MainApplication"
+       android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainApplication"
+            android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
