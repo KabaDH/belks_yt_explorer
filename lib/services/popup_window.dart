@@ -98,14 +98,6 @@ class _PopUpWindowState extends State<PopUpWindow> {
   Widget build(BuildContext context) {
     AndroidWindow.setHandler((name, data) async {
       switch (name) {
-        case 'get status':
-          if (_controller.isInitialised && (halted)) {
-            return 'halted';
-          } else if (_controller.isInitialised) {
-            return 'running';
-          } else {
-            return 'waiting for your command';
-          }
         case 'get params':
           return _controller.currentVideoPosition.inMilliseconds;
         case 'new params':
@@ -145,16 +137,6 @@ class _PopUpWindowState extends State<PopUpWindow> {
             }
           }
 
-        case 'get videoId':
-          return videoId;
-        case 'set video timing':
-          var newVideoPosition = int.parse(data.toString());
-          if (newVideoPosition > 0) {
-            _controller
-              ..videoSeekTo(Duration(milliseconds: newVideoPosition))
-              ..play();
-          }
-          return 'new position $newVideoPosition done';
         case 'halt':
           try {
             _haltPopUp();
@@ -164,14 +146,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
           }
         case 'unhalt':
           try {
-            _controller.unMute();
-            _controller.play();
-            AndroidWindow.setPosition(0, 0);
-            AndroidWindow.resize(500, 280); //500, 280 = 30,30
-            setState(() {
-              halted = false;
-            });
-            debugPrint('Halted = ${halted.toString()}');
+            _unHaltPopup();
             return "Unhalted";
           } catch (e) {
             return e.toString();
@@ -215,7 +190,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
 
     return AndroidWindow(
       child: Opacity(
-        opacity: (halted) ? 0.5 : 1.0,
+        opacity: (halted) ? 0.0 : 1.0,
         child: IgnorePointer(
           ignoring: halted,
           child: Scaffold(
@@ -242,16 +217,21 @@ class _PopUpWindowState extends State<PopUpWindow> {
               const ModalBarrier(),
               (halted)
                   ? const SizedBox.shrink()
-                  : const Positioned(
+                  : Positioned(
                       right: 0,
                       top: 0,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close_outlined,
                           size: 25,
                           color: Colors.black54,
                         ),
-                        onPressed: AndroidWindow.close,
+                        onPressed: () {
+                          AndroidWindow.post('closed');
+                          AndroidWindow.close();
+
+
+                        },
                       )),
               (halted)
                   ? const SizedBox.shrink()
@@ -273,9 +253,4 @@ class _PopUpWindowState extends State<PopUpWindow> {
     );
   }
 
-  showSnackBar(BuildContext context, String title) {
-    final snackBar =
-        SnackBar(content: Text(title), padding: const EdgeInsets.all(8));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
 }

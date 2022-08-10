@@ -62,8 +62,8 @@ class VideoScreenState extends ConsumerState<VideoScreen>
         android_window.close();
       }
       android_window.open(
-        size: const Size(500, 280),
-        position: const Offset(0, 0),
+        size: const Size(30, 30),
+        position: const Offset(200, 0),
         focusable: true,
       );
       ref.read(openPopupProvider.notifier).state = true;
@@ -78,15 +78,10 @@ class VideoScreenState extends ConsumerState<VideoScreen>
 
   @override
   Widget build(BuildContext context) {
-    final Uri ytVideoUrl =
-        Uri.parse('https://www.youtube.com/watch?v=${widget.video.id}');
+    var popUpIsOpened = ref.watch(openPopupProvider);
 
     android_window.setHandler((name, data) async {
       switch (name) {
-        case 'hello':
-          showSnackBar(context, 'message from android window: $data');
-          return 'hello android window';
-
         case 'get params':
           var params = {
             'videoId': widget.video.id,
@@ -94,6 +89,10 @@ class VideoScreenState extends ConsumerState<VideoScreen>
           };
           debugPrint(controller.value.toString());
           return json.encode(params);
+        case 'closed':
+          ref.read(openPopupProvider.notifier).state = false;
+          debugPrint('!!!!! CLOSED POPUP!! STATUS = ${ref.read(openPopupProvider).toString()}');
+          return 'closed';
         case 'ping':
           debugPrint(data.toString());
           return 'pong';
@@ -115,7 +114,18 @@ class VideoScreenState extends ConsumerState<VideoScreen>
         }
 
         if (value == FGBGType.foreground) {
-          android_window.post('halt');
+          debugPrint('!!!!!FOREGROUND!!! POPUP IS OPENED = $popUpIsOpened');
+          if (popUpIsOpened) {
+            android_window.post('halt');
+          } else {
+            debugPrint('!!!!!! OPENING POPUP !!!!!!!!!');
+            android_window.open(
+              size: const Size(30, 30),
+              position: const Offset(200, 0),
+              focusable: true,
+            );
+            ref.read(openPopupProvider.notifier).state = true;
+          }
           var params = await android_window.post('get params');
           controller
             ..seekTo(Duration(milliseconds: int.parse(params.toString())))
@@ -125,6 +135,11 @@ class VideoScreenState extends ConsumerState<VideoScreen>
       },
       child: Scaffold(
         body: ListView(children: [
+          _deviceOrientation == Orientation.landscape
+              ? const SizedBox.shrink()
+              : const SizedBox(
+                  height: 100,
+                ),
           Stack(children: [
             YoutubePlayer(
               controller: controller,
@@ -157,48 +172,10 @@ class VideoScreenState extends ConsumerState<VideoScreen>
             //       )),
             // ),
           ]),
-          ElevatedButton(
-            onPressed: () async {
-              showSnackBar(
-                  context, '${await android_window.canDrawOverlays()}');
-            },
-            child: const Text('Check can draw overlays'),
-          ),
-          const ElevatedButton(
-            onPressed: android_window.requestPermission,
-            child: Text('Request overlay display permission'),
-          ),
-          ElevatedButton(
-            onPressed: () => android_window.open(
-              size: const Size(500, 280),
-              position: const Offset(0, 0),
-              focusable: true,
-            ),
-            child: const Text('Open android window'),
-          ),
-          const ElevatedButton(
-            onPressed: android_window.close,
-            child: Text('Close android window'),
-          ),
-          ElevatedButton(
-            onPressed: () =>
-                debugPrint(controller.value.position.inMilliseconds.toString()),
-            child: const Text('view controller value'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final response = await android_window.post(
-                'hello',
-                'hello android window',
-              );
-              showSnackBar(context, 'response from android window: $response');
-            },
-            child: const Text('Send message to android window'),
-          ),
         ]),
         floatingActionButton: _deviceOrientation == Orientation.portrait
             ? SafeArea(
-              child: Container(
+                child: Container(
                   margin: const EdgeInsets.only(right: 20),
                   padding: const EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
@@ -209,7 +186,8 @@ class VideoScreenState extends ConsumerState<VideoScreen>
                   height: 60,
                   child: IconButton(
                       padding: EdgeInsets.zero,
-                      icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                      icon:
+                          const Icon(Icons.arrow_back_ios, color: Colors.white),
                       onPressed: () => {
                             SystemChrome.setEnabledSystemUIMode(
                                 SystemUiMode.manual,
@@ -218,14 +196,10 @@ class VideoScreenState extends ConsumerState<VideoScreen>
                             Navigator.of(context).pop()
                           }),
                 ),
-            )
+              )
             : null,
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );
-  }
-
-  showSnackBar(BuildContext context, String title) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(title)));
   }
 }
