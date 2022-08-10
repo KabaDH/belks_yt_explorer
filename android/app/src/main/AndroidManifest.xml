@@ -4,7 +4,7 @@
         android:label="Belk`s Tube"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name=".MainApplication"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

@@ -123,7 +123,7 @@ class HomeScreenState extends State<HomeScreen>
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => VideoScreen(
-                  id: video.id,
+                  video: video,
                 )));
       },
       child: Container(

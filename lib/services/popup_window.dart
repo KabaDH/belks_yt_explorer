@@ -53,9 +53,9 @@ class _PopUpWindowState extends State<PopUpWindow> {
 
     _controller = PodPlayerController(
       playVideoFrom: PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
-      podPlayerConfig: PodPlayerConfig(
+      podPlayerConfig:  PodPlayerConfig(
         autoPlay: true,
-        initialVideoQuality: 360,
+        videoQualityPriority: [360,240, 720,1080],
       ),
     )
       ..initialise()
@@ -148,7 +148,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
                     PlayVideoFrom.networkQualityUrls(videoUrls: urls!),
                 playerConfig: PodPlayerConfig(
                   autoPlay: true,
-                  initialVideoQuality: 360,
+                  videoQualityPriority: [360,240, 720,1080],
                 ),
               )
               ..videoSeekTo(

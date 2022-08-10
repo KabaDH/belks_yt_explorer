@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:belks_tube/models/models.dart';
 
 class VideoScreen extends StatefulWidget {
-  final String id;
+  final Video video;
 
   VideoScreen({
-    required this.id,
+    required this.video,
   });
 
   VideoScreenState createState() => VideoScreenState();
@@ -24,7 +25,7 @@ class VideoScreenState extends State<VideoScreen> {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
     _controller = YoutubePlayerController(
-        initialVideoId: widget.id,
+        initialVideoId: widget.video.id,
         flags: const YoutubePlayerFlags(autoPlay: false, mute: false));
     _setLogoOpacity();
   }
@@ -43,7 +44,7 @@ class VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
     final Uri ytVideoUrl =
-        Uri.parse('https://www.youtube.com/watch?v=${widget.id}');
+        Uri.parse('https://www.youtube.com/watch?v=${widget.video.id}');
 
     Orientation _deviceOrientation = MediaQuery.of(context).orientation;
     return Scaffold(
