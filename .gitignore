@@ -53,3 +53,4 @@ app.*.map.json
 /android/app/upload-keystore.jks
 /lib/utilites/keys.dart
 /android/app/google-services.json
+/android/app/build/generated/res/google-services/debug/values/values.xml
