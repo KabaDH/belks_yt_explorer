@@ -1,7 +1,8 @@
 A minimalistic application to browse youtube videos.
 Application developed with YouTube (API services)
 
-Promoted modules: flutter_native_splash, youtube_player_flutter, shared_preferences, url_launcher
+Promoted modules: flutter_native_splash, youtube_player_flutter, shared_preferences, url_launcher,
+flutter_fgbg, android_window, pod_player
 Promoted widgets: APIservice (async http), Spacer, cascade actions(...), CustomScrollView, Divider
 
 ==============================================================================

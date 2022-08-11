@@ -3,17 +3,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/screens.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'services/popup_window.dart';
+import 'dart:io';
 
 ///For the lunch icon thanks to https://icons8.com/
 //color #FF0000 padding 20%
 
+@pragma('vm:entry-point')
+void androidWindow() {
+  if (Platform.isAndroid) {
+    runApp(const AndroidWindowApp());
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool k = prefs.containsKey('PrivatePolicyAccepted');
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
     statusBarColor: Colors.transparent,
   ));
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool k = prefs.containsKey('PrivatePolicyAccepted');
+  // SystemChrome.setPreferredOrientations(
+  //         [DeviceOrientation.portraitUp, DeviceOrientation.landscapeLeft])
+  //     .then((_) => runApp(MyApp(acceptedPrivacy: k)));
   runApp(MyApp(acceptedPrivacy: k));
 }
 
@@ -32,7 +44,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.green.shade100,
         ),
         home: acceptedPrivacy
-            ? HomeScreen()
+            ? const HomeScreen()
             : PrivacyScreen(
                 acceptedPrivacy: acceptedPrivacy,
               ),

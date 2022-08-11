@@ -68,8 +68,8 @@ class HomeScreenState extends State<HomeScreen>
   }
 
   _getVersionInfo() async {
-    PackageInfo _packageInfo = await PackageInfo.fromPlatform();
-    packageInfo = _packageInfo;
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    packageInfo = packageInfo;
   }
 
   _initChannel() async {
@@ -112,85 +112,6 @@ class HomeScreenState extends State<HomeScreen>
       _isLoading = false;
       favoriteChannels = _favoriteChannels;
     });
-  }
-
-  _videosBuilder(Video video) {
-    DateTime _posted = DateTime.parse(video.publishedAt).toLocal();
-    String _postedDate = DateFormat('dd/MM/yyyy HH:mm').format(_posted);
-    Uri _ytVideoUrl = Uri.parse('https://www.youtube.com/watch?v=${video.id}');
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => VideoScreen(
-                  id: video.id,
-                )));
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        padding: const EdgeInsets.all(10),
-        width: double.infinity,
-        height: 140,
-        decoration: const BoxDecoration(color: Colors.white, boxShadow: [
-          BoxShadow(color: Colors.black26, offset: Offset(0, 2), blurRadius: 6)
-        ]),
-        child: Row(
-          children: [
-            Stack(children: [
-              Image.network(
-                video.thumbnailUrl,
-                width: 170,
-                height: 130,
-              ),
-              Positioned(
-                left: 0,
-                bottom: -10.0,
-                child: AnimatedOpacity(
-                  duration: const Duration(seconds: 3),
-                  opacity: _logoOpacity,
-                  child: IconButton(
-                      onPressed: () async {
-                        if (await canLaunchUrl(_ytVideoUrl)) {
-                          launchUrl(
-                            _ytVideoUrl,
-                          );
-                        } else {
-                          throw 'Can`t load url';
-                        }
-                      },
-                      icon: Image.asset(
-                        'assets/youtube_social_icon_red.png',
-                        width: 20,
-                        height: 20,
-                      )),
-                ),
-              )
-            ]),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    video.title,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 4,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500, fontSize: 16),
-                  ),
-                  Text(
-                    _postedDate,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(color: Colors.grey[400], fontSize: 12),
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 
   _loadMoreVideos() async {
@@ -664,12 +585,19 @@ class HomeScreenState extends State<HomeScreen>
                   }
                   return false;
                 },
-                child: ListView.builder(
-                    itemCount: _channel.videos!.length,
-                    itemBuilder: (context, index) {
-                      Video video = _channel.videos![index];
-                      return _videosBuilder(video);
-                    }),
+                child: (_channel.videos!.isEmpty)
+                    ? const SizedBox.shrink()
+                    : ListView.builder(
+                        itemCount: _channel.videos!.length,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 5),
+                        itemBuilder: (context, index) {
+                          Video video = _channel.videos![index];
+                          return VideosBuilder(
+                            video: video,
+                            channel: _channel,
+                          );
+                        }),
               ),
             ),
       drawer: favoriteChannels.isEmpty
