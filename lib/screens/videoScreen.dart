@@ -36,10 +36,10 @@ class VideoScreenState extends ConsumerState<VideoScreen>
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: []); //We can turn off top system UI
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-    //     overlays: SystemUiOverlay.values);
+    //     overlays: []); //We can turn off top system UI
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
     WidgetsBinding.instance.addObserver(this);
     controller = YoutubePlayerController(
         initialVideoId: widget.video.id,
@@ -138,6 +138,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
         }
       },
       child: Scaffold(
+        //using Stack here to avoid scrolling and exceeded height in fullscreen
         body: Stack(children: [
           (isPortrait)
               ? ListView(
@@ -153,7 +154,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
                         style: Theme.of(context)
                             .textTheme
                             .headline6
-                            ?.copyWith(fontWeight: FontWeight.bold),
+                            ?.copyWith(fontWeight: FontWeight.bold,),
                       ),
                     ),
                     const Divider(
