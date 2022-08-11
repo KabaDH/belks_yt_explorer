@@ -38,8 +38,6 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: []); //We can turn off top system UI
-    // SystemChrome.setEnabledSystemUIOverlays([]); //We can turn off top system UI
-
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
     //     overlays: SystemUiOverlay.values);
     WidgetsBinding.instance.addObserver(this);
@@ -51,19 +49,6 @@ class VideoScreenState extends ConsumerState<VideoScreen>
       checkAndOpenPopup();
     }
   }
-
-  // Hide logo after we have loaded the screen
-  // Future<void> setLogoOpacity() async {
-  //   double newOpacity =
-  //       await Future.delayed(const Duration(milliseconds: 1), () {
-  //     return 0.0;
-  //   });
-  //   setState(() {
-  //     if (mounted) {
-  //       logoOpacity = newOpacity;
-  //     }
-  //   });
-  // }
 
   void checkAndOpenPopup() {
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -153,47 +138,49 @@ class VideoScreenState extends ConsumerState<VideoScreen>
         }
       },
       child: Scaffold(
-        body: ListView(children: [
+        body: Stack(children: [
+          (isPortrait)
+              ? ListView(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width / 16 * 9,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      child: Text(
+                        widget.video.title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const Divider(
+                      height: 2,
+                      color: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      child: Row(children: [
+                        Text(
+                          'Posted: $postedDate',
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        const Spacer(),
+                        Text(timeago.format(DateTime.now().subtract(postedAgo)),
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.bodyText2),
+                      ]),
+                    )
+                  ],
+                )
+              : const SizedBox.shrink(),
           YoutubePlayer(
-            width: (isPortrait) ? double.infinity : 300,
             controller: controller,
           ),
-          (isPortrait)
-              ? Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Text(
-                    widget.video.title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                )
-              : const SizedBox.shrink(),
-          (isPortrait)
-              ? const Divider(
-                  height: 2,
-                  color: Colors.black,
-                )
-              : const SizedBox.shrink(),
-          (isPortrait)
-              ? Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Row(children: [
-                    Text(
-                      'Posted: $postedDate',
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    const Spacer(),
-                    Text(timeago.format(DateTime.now().subtract(postedAgo)),
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodyText2),
-                  ]),
-                )
-              : const SizedBox.shrink(),
         ]),
         appBar: (isPortrait)
             ? AppBar(
