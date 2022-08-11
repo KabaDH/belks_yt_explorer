@@ -12,12 +12,17 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:belks_tube/models/models.dart';
 import 'package:android_window/main.dart' as android_window;
 import 'package:flutter_fgbg/flutter_fgbg.dart';
+import 'dart:io';
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:intl/intl.dart';
 
 class VideoScreen extends ConsumerStatefulWidget {
   final Video video;
+  final Channel channel;
 
   VideoScreen({
     required this.video,
+    required this.channel,
   });
 
   @override
@@ -27,18 +32,21 @@ class VideoScreen extends ConsumerStatefulWidget {
 class VideoScreenState extends ConsumerState<VideoScreen>
     with WidgetsBindingObserver {
   late YoutubePlayerController controller;
-  // double logoOpacity = 1.0;
 
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays([]); //We can turn off top system UI
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
     WidgetsBinding.instance.addObserver(this);
     controller = YoutubePlayerController(
         initialVideoId: widget.video.id,
         flags: const YoutubePlayerFlags(autoPlay: true, mute: false));
     // setLogoOpacity();
-    checkAndOpenPopup();
+    if (Platform.isAndroid) {
+      checkAndOpenPopup();
+    }
   }
 
   // Hide logo after we have loaded the screen
@@ -70,6 +78,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     });
   }
 
+  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (mounted) {
       setState(() {});
@@ -79,6 +88,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
   @override
   Widget build(BuildContext context) {
     var popUpIsOpened = ref.watch(openPopupProvider);
+    Orientation deviceOrientation = MediaQuery.of(context).orientation;
 
     android_window.setHandler((name, data) async {
       switch (name) {
@@ -91,7 +101,8 @@ class VideoScreenState extends ConsumerState<VideoScreen>
           return json.encode(params);
         case 'closed':
           ref.read(openPopupProvider.notifier).state = false;
-          debugPrint('!!!!! CLOSED POPUP!! STATUS = ${ref.read(openPopupProvider).toString()}');
+          debugPrint(
+              '!!!!! CLOSED POPUP!! STATUS = ${ref.read(openPopupProvider).toString()}');
           return 'closed';
         case 'ping':
           debugPrint(data.toString());
@@ -100,105 +111,138 @@ class VideoScreenState extends ConsumerState<VideoScreen>
       return null;
     });
 
-    Orientation _deviceOrientation = MediaQuery.of(context).orientation;
+    buildPortraitLayout() {
+      DateTime posted = DateTime.parse(widget.video.publishedAt).toLocal();
+      String postedDate = DateFormat('dd/MM/yyyy HH:mm').format(posted);
+      final postedAgo = DateTime.now().difference(posted);
+
+      return ListView(children: [
+        Stack(children: [
+          YoutubePlayer(
+            controller: controller,
+            width: double.infinity,
+          ),
+        ]),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text(
+            widget.video.title,
+            style: Theme.of(context)
+                .textTheme
+                .headline6
+                ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+        ),
+        const Divider(
+          height: 2,
+          color: Colors.black,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Row(children: [
+            Text(
+              'Posted: $postedDate',
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            const Spacer(),
+            Text(timeago.format(DateTime.now().subtract(postedAgo)),
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyText2),
+          ]),
+        ),
+      ]);
+    }
+
+    buildLandscapeLayout() {
+      return YoutubePlayer(
+        controller: controller,
+        width: double.infinity,
+      );
+    }
+
     return FGBGNotifier(
       onEvent: (FGBGType value) async {
-        if (value == FGBGType.background) {
-          var params = {
-            'videoId': widget.video.id,
-            'currentPosition': controller.value.position.inMilliseconds,
-          };
-          var resp =
-              await android_window.post('new params', json.encode(params));
-          debugPrint(resp.toString());
-        }
-
-        if (value == FGBGType.foreground) {
-          debugPrint('!!!!!FOREGROUND!!! POPUP IS OPENED = $popUpIsOpened');
-          if (popUpIsOpened) {
-            android_window.post('halt');
-          } else {
-            debugPrint('!!!!!! OPENING POPUP !!!!!!!!!');
-            android_window.open(
-              size: const Size(30, 30),
-              position: const Offset(200, 0),
-              focusable: true,
-            );
-            ref.read(openPopupProvider.notifier).state = true;
+        if (Platform.isAndroid) {
+          if (value == FGBGType.background) {
+            var params = {
+              'videoId': widget.video.id,
+              'currentPosition': controller.value.position.inMilliseconds,
+            };
+            var resp =
+                await android_window.post('new params', json.encode(params));
+            debugPrint(resp.toString());
           }
-          var params = await android_window.post('get params');
-          controller
-            ..seekTo(Duration(milliseconds: int.parse(params.toString())))
-            ..play();
-          debugPrint('new timepoint : $params');
+
+          if (value == FGBGType.foreground) {
+            debugPrint('!!!!!FOREGROUND!!! POPUP IS OPENED = $popUpIsOpened');
+            if (popUpIsOpened) {
+              android_window.post('halt');
+            } else {
+              debugPrint('!!!!!! OPENING POPUP !!!!!!!!!');
+              android_window.open(
+                size: const Size(30, 30),
+                position: const Offset(200, 0),
+                focusable: true,
+              );
+              ref.read(openPopupProvider.notifier).state = true;
+            }
+            var params = await android_window.post('get params');
+            controller
+              ..seekTo(Duration(milliseconds: int.parse(params.toString())))
+              ..play();
+            debugPrint('new timepoint : $params');
+          }
         }
       },
       child: Scaffold(
-        body: ListView(children: [
-          _deviceOrientation == Orientation.landscape
-              ? const SizedBox.shrink()
-              : const SizedBox(
-                  height: 100,
-                ),
-          Stack(children: [
-            YoutubePlayer(
-              controller: controller,
-              width: double.infinity,
-            ),
-            // Visibility(
-            //   visible: _deviceOrientation == Orientation.portrait,
-            //   child: Positioned(
-            //       left: 10,
-            //       bottom: 10,
-            //       child: AnimatedOpacity(
-            //         duration: const Duration(seconds: 3),
-            //         opacity: logoOpacity,
-            //         child: GestureDetector(
-            //           child: Image.asset(
-            //             'assets/yt_logo_rgb_dark.png',
-            //             width: 100,
-            //             fit: BoxFit.cover,
-            //           ),
-            //           onTap: () async {
-            //             if (await canLaunchUrl(ytVideoUrl)) {
-            //               launchUrl(
-            //                 ytVideoUrl,
-            //               );
-            //             } else {
-            //               throw 'Can`t load url';
-            //             }
-            //           },
-            //         ),
-            //       )),
-            // ),
-          ]),
-        ]),
-        floatingActionButton: _deviceOrientation == Orientation.portrait
-            ? SafeArea(
-                child: Container(
-                  margin: const EdgeInsets.only(right: 20),
-                  padding: const EdgeInsets.only(left: 5),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).primaryColor,
+        body: deviceOrientation == Orientation.portrait
+            ? buildPortraitLayout()
+            : buildLandscapeLayout(),
+        appBar: deviceOrientation == Orientation.portrait
+            ? AppBar(
+                centerTitle: true,
+                backgroundColor: Theme.of(context).primaryColor,
+                leading: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                    onPressed: () => {
+                          SystemChrome.setEnabledSystemUIMode(
+                              SystemUiMode.manual,
+                              overlays: SystemUiOverlay.values),
+                          if (Platform.isAndroid) {android_window.close()},
+                          Navigator.of(context).pop()
+                        }),
+                title: ListTile(
+                  leading: BuildProfileImg(
+                      imgUrl: widget.channel.profilePictureUrl, size: 50),
+                  title: Text(
+                    widget.channel.title,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black54,
+                              offset: Offset(0, 2),
+                              blurRadius: 6)
+                        ]),
                   ),
-                  width: 60,
-                  height: 60,
-                  child: IconButton(
-                      padding: EdgeInsets.zero,
-                      icon:
-                          const Icon(Icons.arrow_back_ios, color: Colors.white),
-                      onPressed: () => {
-                            SystemChrome.setEnabledSystemUIMode(
-                                SystemUiMode.manual,
-                                overlays: SystemUiOverlay.values),
-                            android_window.close(),
-                            Navigator.of(context).pop()
-                          }),
+                  subtitle: Text(
+                    '${widget.channel.subscriberCount} subscribers',
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black54,
+                              offset: Offset(0, 2),
+                              blurRadius: 3)
+                        ]),
+                  ),
                 ),
               )
             : null,
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );
   }

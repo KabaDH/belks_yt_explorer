@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
-INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
-MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
+INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
+MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-48:12
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
@@ -64,11 +64,11 @@ INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-62:12
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
 		INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:11-69
@@ -150,28 +150,32 @@ MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/m
 MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:44:5-66
 	android:name
 		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:44:22-64
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:45:5-68
+	android:name
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:45:22-65
 queries
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:46:5-61:15
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:48:5-63:15
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-11:15
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-11:15
 intent#action:name:android.intent.action.VIEW+data:scheme:https
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:48:9-51:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:50:9-53:18
 action#android.intent.action.VIEW
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:49:13-65
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:51:13-65
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:49:21-62
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:51:21-62
 data
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:50:13-44
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:52:13-44
 	android:scheme
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:50:19-41
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:52:19-41
 intent#action:name:android.intent.action.VIEW+data:scheme:http
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:52:9-55:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:54:9-57:18
 intent#action:name:android.intent.action.SEND+data:mimeType:*/*
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:57:9-60:18
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:59:9-62:18
 action#android.intent.action.SEND
-ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:58:13-65
+ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:60:13-65
 	android:name
-		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:58:21-62
+		ADDED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:60:21-62
 uses-sdk
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml

@@ -27,8 +27,8 @@ class _PopUpWindowState extends State<PopUpWindow> {
   String videoId = 'o6ekNtTu75Y';
   late final PodPlayerController _controller;
   bool isLoading = true;
-  bool showCloseButton = true;
   bool halted = true;
+  bool transparentButtons = true;
 
   @override
   void initState() {
@@ -93,6 +93,18 @@ class _PopUpWindowState extends State<PopUpWindow> {
     });
     debugPrint('Halted = ${halted.toString()}');
   }
+
+  // Hide btns after we have loaded the screen
+  // Future<void> setOpacity(Duration lag) async {
+  //   bool newOpacity = await Future.delayed(lag, () {
+  //     return !transparentButtons;
+  //   });
+  //   setState(() {
+  //     if (mounted) {
+  //       transparentButtons = newOpacity;
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -215,36 +227,51 @@ class _PopUpWindowState extends State<PopUpWindow> {
                         )),
               ),
               const ModalBarrier(),
+              GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      transparentButtons = !transparentButtons;
+                    });
+                  },
+                  child: Container(
+                    color: Colors.transparent,
+                  )),
               (halted)
                   ? const SizedBox.shrink()
                   : Positioned(
                       right: 0,
                       top: 0,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.close_outlined,
-                          size: 25,
-                          color: Colors.black54,
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: (transparentButtons) ? 0.0 : 1.0,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.close_outlined,
+                            size: 25,
+                            color: Colors.black54,
+                          ),
+                          onPressed: () {
+                            AndroidWindow.post('closed');
+                            AndroidWindow.close();
+                          },
                         ),
-                        onPressed: () {
-                          AndroidWindow.post('closed');
-                          AndroidWindow.close();
-
-
-                        },
                       )),
               (halted)
                   ? const SizedBox.shrink()
-                  : const Positioned(
+                  : Positioned(
                       left: 0,
                       top: 0,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.fullscreen_exit_outlined,
-                          size: 25,
-                          color: Colors.black54,
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 500),
+                        opacity: (transparentButtons) ? 0.0 : 1.0,
+                        child: const IconButton(
+                          icon: Icon(
+                            Icons.fullscreen_exit_outlined,
+                            size: 25,
+                            color: Colors.black54,
+                          ),
+                          onPressed: AndroidWindow.launchApp,
                         ),
-                        onPressed: AndroidWindow.launchApp,
                       )),
             ]),
           ),
@@ -252,5 +279,4 @@ class _PopUpWindowState extends State<PopUpWindow> {
       ),
     );
   }
-
 }

@@ -18,11 +18,14 @@ void androidWindow() {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool k = prefs.containsKey('PrivatePolicyAccepted');
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
     statusBarColor: Colors.transparent,
   ));
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool k = prefs.containsKey('PrivatePolicyAccepted');
+  // SystemChrome.setPreferredOrientations(
+  //         [DeviceOrientation.portraitUp, DeviceOrientation.landscapeLeft])
+  //     .then((_) => runApp(MyApp(acceptedPrivacy: k)));
   runApp(MyApp(acceptedPrivacy: k));
 }
 
