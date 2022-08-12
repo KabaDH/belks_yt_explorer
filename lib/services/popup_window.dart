@@ -69,6 +69,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
     setState(() => {
           isLoading = false,
           videoId = params['videoId'],
+          canPlayBlackScreen = params['canPlayBlackScreen']
         });
   }
 

@@ -528,7 +528,7 @@ class HomeScreenState extends State<HomeScreen>
                           appVersion: packageInfo.version,
                         )));
               },
-              icon: const Icon(Icons.info_outline))
+              icon: const Icon(Icons.settings))
         ],
         title: _isLoading
             ? const Text(

@@ -20,7 +20,7 @@ class VideoScreen extends ConsumerStatefulWidget {
   final Video video;
   final Channel channel;
 
-   VideoScreen({
+  VideoScreen({
     required this.video,
     required this.channel,
   });
@@ -35,7 +35,6 @@ class VideoScreenState extends ConsumerState<VideoScreen>
 
   Screen screen = Screen();
   late StreamSubscription<ScreenStateEvent> screenSubscription;
-  bool canPlayBlackScreen = false;
   bool screenIsOn = true;
 
   @override
@@ -87,7 +86,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
   }
 
   void onData(ScreenStateEvent event) {
-    if (!canPlayBlackScreen) {
+    if (!ref.read(userProvider).canPlayBlackScreen) {
       switch (event) {
         case ScreenStateEvent.SCREEN_OFF:
           screenIsOn = false;
@@ -106,12 +105,6 @@ class VideoScreenState extends ConsumerState<VideoScreen>
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    screenSubscription.cancel();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var popUpIsOpened = ref.watch(openPopupProvider);
     bool isPortrait =
@@ -126,6 +119,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
           var params = {
             'videoId': widget.video.id,
             'currentPosition': controller.value.position.inMilliseconds,
+            'canPlayBlackScreen': ref.read(userProvider).canPlayBlackScreen
           };
           debugPrint(controller.value.toString());
           return json.encode(params);
@@ -181,6 +175,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
         body: Stack(children: [
           (isPortrait)
               ? ListView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     SizedBox(
                       height: MediaQuery.of(context).size.width / 16 * 9,

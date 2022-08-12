@@ -2,7 +2,7 @@ class User {
   final String name;
   final bool canPlayBlackScreen;
 
-  User(this.name, this.canPlayBlackScreen);
+  User({required this.name, this.canPlayBlackScreen = false});
 
-  static get defUser => User('AnonymousUser', false);
+  static get defUser => User(name: 'AnonymousUser');
 }
