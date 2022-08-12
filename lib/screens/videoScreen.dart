@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
-
+import 'package:screen_state/screen_state.dart';
 import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:belks_tube/models/models.dart';
 import 'package:android_window/main.dart' as android_window;
 import 'package:flutter_fgbg/flutter_fgbg.dart';
@@ -20,7 +20,7 @@ class VideoScreen extends ConsumerStatefulWidget {
   final Video video;
   final Channel channel;
 
-  VideoScreen({
+   VideoScreen({
     required this.video,
     required this.channel,
   });
@@ -33,6 +33,11 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     with WidgetsBindingObserver {
   late YoutubePlayerController controller;
 
+  Screen screen = Screen();
+  late StreamSubscription<ScreenStateEvent> screenSubscription;
+  bool canPlayBlackScreen = false;
+  bool screenIsOn = true;
+
   @override
   void initState() {
     super.initState();
@@ -44,7 +49,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     controller = YoutubePlayerController(
         initialVideoId: widget.video.id,
         flags: const YoutubePlayerFlags(autoPlay: true, mute: false));
-    // setLogoOpacity();
+    startScreenListening();
     if (Platform.isAndroid) {
       checkAndOpenPopup();
     }
@@ -71,6 +76,39 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     if (mounted) {
       setState(() {});
     }
+  }
+
+  void startScreenListening() {
+    try {
+      screenSubscription = screen.screenStateStream!.listen(onData);
+    } on ScreenStateException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void onData(ScreenStateEvent event) {
+    if (!canPlayBlackScreen) {
+      switch (event) {
+        case ScreenStateEvent.SCREEN_OFF:
+          screenIsOn = false;
+          debugPrint('!!!!!!!! Screen status ${screenIsOn.toString()}');
+          break;
+        case ScreenStateEvent.SCREEN_ON:
+          screenIsOn = true;
+          debugPrint('!!!!!!!! Screen status ${screenIsOn.toString()}');
+
+          break;
+        case ScreenStateEvent.SCREEN_UNLOCKED:
+          break;
+      }
+    }
+    debugPrint('!!!!!! SCREEN EVENT:  $event');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    screenSubscription.cancel();
   }
 
   @override
@@ -105,7 +143,8 @@ class VideoScreenState extends ConsumerState<VideoScreen>
 
     return FGBGNotifier(
       onEvent: (FGBGType value) async {
-        if (Platform.isAndroid) {
+        debugPrint('!!!!!! ScreenStatusBefore FGBG : ${screenIsOn.toString()}');
+        if (Platform.isAndroid && screenIsOn) {
           if (value == FGBGType.background) {
             var params = {
               'videoId': widget.video.id,
@@ -151,10 +190,9 @@ class VideoScreenState extends ConsumerState<VideoScreen>
                           horizontal: 10, vertical: 5),
                       child: Text(
                         widget.video.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6
-                            ?.copyWith(fontWeight: FontWeight.bold,),
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ),
                     const Divider(

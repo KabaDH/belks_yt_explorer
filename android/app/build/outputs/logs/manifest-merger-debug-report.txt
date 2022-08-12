@@ -7,12 +7,13 @@ INJECTED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src
 MERGED from /Users/inlevkov/development/apps/belks_yt_explorer/android/app/src/main/AndroidManifest.xml:1:1-64:12
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-48:12
+MERGED from [:screen_state] /Users/inlevkov/development/apps/belks_yt_explorer/build/screen_state/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:video_player_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
-MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/aecdc7cff986d875cee201500af67307/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/04d185add0d0edeb3ce433920231bc03/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
@@ -184,6 +185,8 @@ MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks
 MERGED from [:shared_preferences_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_inappwebview] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_inappwebview/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:screen_state] /Users/inlevkov/development/apps/belks_yt_explorer/build/screen_state/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:screen_state] /Users/inlevkov/development/apps/belks_yt_explorer/build/screen_state/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:package_info_plus] /Users/inlevkov/development/apps/belks_yt_explorer/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -192,10 +195,10 @@ MERGED from [:video_player_android] /Users/inlevkov/development/apps/belks_yt_ex
 MERGED from [:video_player_android] /Users/inlevkov/development/apps/belks_yt_explorer/build/video_player_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:android_window] /Users/inlevkov/development/apps/belks_yt_explorer/build/android_window/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_fgbg] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_fgbg/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] /Users/inlevkov/development/apps/belks_yt_explorer/build/flutter_native_splash/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] /Users/inlevkov/development/apps/belks_yt_explorer/build/wakelock/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/inlevkov/.gradle/caches/transforms-2/files-2.1/aecdc7cff986d875cee201500af67307/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41

@@ -68,8 +68,9 @@ class HomeScreenState extends State<HomeScreen>
   }
 
   _getVersionInfo() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    packageInfo = packageInfo;
+    PackageInfo _packageInfo = await PackageInfo.fromPlatform();
+    debugPrint('Version info init passed');
+    packageInfo = _packageInfo;
   }
 
   _initChannel() async {
