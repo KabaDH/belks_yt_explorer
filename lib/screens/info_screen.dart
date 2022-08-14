@@ -1,10 +1,14 @@
 import 'package:belks_tube/screens/screens.dart';
+import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:io';
 
-class InfoScreen extends StatelessWidget {
-  InfoScreen({
+class InfoScreen extends ConsumerStatefulWidget {
+  const InfoScreen({
     Key? key,
     required this.appVersion,
     required this.appBuild,
@@ -13,6 +17,11 @@ class InfoScreen extends StatelessWidget {
   final String appVersion;
   final String appBuild;
 
+  @override
+  ConsumerState<InfoScreen> createState() => _InfoScreenState();
+}
+
+class _InfoScreenState extends ConsumerState<InfoScreen> {
   final double fontSize = 14.0;
 
   final Map<String, Widget> screens = {
@@ -22,6 +31,7 @@ class InfoScreen extends StatelessWidget {
   };
 
   final Uri flutterUri = Uri.parse('https://flutter.dev');
+
 
   menuElement(String title, void Function() onTap) {
     return Padding(
@@ -56,24 +66,53 @@ class InfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var user = ref.watch(userProvider);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
-          'Info Screen',
+          'Info Screen & settings',
           style: TextStyle(color: Colors.white, fontSize: 22),
         ),
       ),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            (Platform.isAndroid) ? Padding(
+              padding: const EdgeInsets.only(left: 15, top: 10, right: 15),
+              child: Card(
+                color: Colors.white,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Play sound when the screen is turned off ',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14),
+                        ),
+                      ),
+                      Switch(
+                        onChanged: (bool value) {
+                          ref
+                              .read(userProvider.notifier)
+                              .copyWith(canPlayBlackScreen: value);
+                        },
+                        value: user.canPlayBlackScreen,
+                      ),
+                    ]),
+              ),
+            ) : const SizedBox.shrink(),
             const Spacer(),
             ...screens
                 .map((key, value) => MapEntry(
@@ -138,7 +177,7 @@ class InfoScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Text(
-                'Version: $appVersion+$appBuild',
+                'Version: ${widget.appVersion}+${widget.appBuild}',
                 style: TextStyle(
                   fontSize: fontSize,
                   color: Colors.black,

@@ -43,6 +43,7 @@ dependencies:
   pod_player: ^0.1.0
   timeago: ^3.2.2
   flutter_fgbg: ^0.2.0
+  screen_state: ^2.0.0
 
 dev_dependencies:
   flutter_test:

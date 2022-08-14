@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:android_window/android_window.dart';
 import 'package:flutter/material.dart';
 import 'package:pod_player/pod_player.dart';
+import 'package:screen_state/screen_state.dart';
 
 class AndroidWindowApp extends StatelessWidget {
   const AndroidWindowApp({Key? key}) : super(key: key);
@@ -30,11 +31,16 @@ class _PopUpWindowState extends State<PopUpWindow> {
   bool halted = true;
   bool transparentButtons = true;
 
+  Screen screen = Screen();
+  late StreamSubscription<ScreenStateEvent> screenSubscription;
+  bool canPlayBlackScreen = false;
+
   @override
   void initState() {
     super.initState();
     loadVideo();
     pingPong();
+    startScreenListening();
   }
 
   void pingPong() async {
@@ -63,6 +69,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
     setState(() => {
           isLoading = false,
           videoId = params['videoId'],
+          canPlayBlackScreen = params['canPlayBlackScreen']
         });
   }
 
@@ -70,6 +77,7 @@ class _PopUpWindowState extends State<PopUpWindow> {
   void dispose() {
     super.dispose();
     _controller.dispose();
+    screenSubscription.cancel();
   }
 
   void _haltPopUp() {
@@ -94,17 +102,38 @@ class _PopUpWindowState extends State<PopUpWindow> {
     debugPrint('Halted = ${halted.toString()}');
   }
 
-  // Hide btns after we have loaded the screen
-  // Future<void> setOpacity(Duration lag) async {
-  //   bool newOpacity = await Future.delayed(lag, () {
-  //     return !transparentButtons;
-  //   });
-  //   setState(() {
-  //     if (mounted) {
-  //       transparentButtons = newOpacity;
-  //     }
-  //   });
-  // }
+  void startScreenListening() {
+    try {
+      screenSubscription = screen.screenStateStream!.listen(onData);
+    } on ScreenStateException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void onData(ScreenStateEvent event) {
+    if (!canPlayBlackScreen) {
+      switch (event) {
+        case ScreenStateEvent.SCREEN_OFF:
+          _controller.pause();
+          debugPrint(
+              '!!!POPUP!!!!! Screen status  ${_controller.isVideoPlaying}');
+          break;
+        case ScreenStateEvent.SCREEN_ON:
+          if (!halted) {
+            _controller.play();
+          }
+          debugPrint(
+              '!!!!POPUP!!!! Screen status ${_controller.isVideoPlaying.toString()}');
+
+          break;
+        case ScreenStateEvent.SCREEN_UNLOCKED:
+          debugPrint('!!!POPUP!!!!! Screen status UNLOCKED');
+
+          break;
+      }
+    }
+    debugPrint('!!!POPUP!!! SCREEN EVENT:  $event');
+  }
 
   @override
   Widget build(BuildContext context) {
