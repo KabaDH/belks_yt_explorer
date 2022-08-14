@@ -1,21 +1,22 @@
+import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:belks_tube/models/models.dart';
 import 'screens.dart';
 import 'package:belks_tube/services/api_services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  HomeScreenState createState() => HomeScreenState();
+  ConsumerState createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen>
+class HomeScreenState extends ConsumerState<HomeScreen>
     with SingleTickerProviderStateMixin {
   late final String channelId = 'UCjzHeG1KWoonmf9d5KBvSiw';
   late List<String> favoriteChannelsID;
@@ -47,6 +48,7 @@ class HomeScreenState extends State<HomeScreen>
     _initChannel();
     _getVersionInfo();
     _setLogoOpacity();
+    ref.read(userProvider.notifier).initUser();
   }
 
   @override

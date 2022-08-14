@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:io';
 
 class InfoScreen extends ConsumerStatefulWidget {
   const InfoScreen({
@@ -30,6 +31,7 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
   };
 
   final Uri flutterUri = Uri.parse('https://flutter.dev');
+
 
   menuElement(String title, void Function() onTap) {
     return Padding(
@@ -83,7 +85,7 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+            (Platform.isAndroid) ? Padding(
               padding: const EdgeInsets.only(left: 15, top: 10, right: 15),
               child: Card(
                 color: Colors.white,
@@ -93,7 +95,7 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
-                          'Don\'t stop playing after screen turned off  ',
+                          'Play sound when the screen is turned off ',
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -110,7 +112,7 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
                       ),
                     ]),
               ),
-            ),
+            ) : const SizedBox.shrink(),
             const Spacer(),
             ...screens
                 .map((key, value) => MapEntry(
