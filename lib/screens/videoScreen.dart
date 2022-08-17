@@ -43,7 +43,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
     //     overlays: []); //We can turn off top system UI
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+        overlays: []);
     WidgetsBinding.instance.addObserver(this);
     controller = YoutubePlayerController(
         initialVideoId: widget.video.id,
@@ -180,34 +180,43 @@ class VideoScreenState extends ConsumerState<VideoScreen>
                     SizedBox(
                       height: MediaQuery.of(context).size.width / 16 * 9,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
-                      child: Text(
-                        widget.video.title,
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                    Container(
+                      color: Colors.white70,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        child: Text(
+                          widget.video.title,
+                          style:
+                              Theme.of(context).textTheme.headline6?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
                       ),
                     ),
                     const Divider(
                       height: 2,
                       color: Colors.black,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
-                      child: Row(children: [
-                        Text(
-                          'Posted: $postedDate',
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.bodyText2,
-                        ),
-                        const Spacer(),
-                        Text(timeago.format(DateTime.now().subtract(postedAgo)),
+                    Container(
+                      color: Colors.white54,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        child: Row(children: [
+                          Text(
+                            'Posted: $postedDate',
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context).textTheme.bodyText2),
-                      ]),
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          const Spacer(),
+                          Text(
+                              timeago
+                                  .format(DateTime.now().subtract(postedAgo)),
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context).textTheme.bodyText2),
+                        ]),
+                      ),
                     )
                   ],
                 )
