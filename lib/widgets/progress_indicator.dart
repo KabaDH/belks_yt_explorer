@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ShowBelksProgressIndicator extends AnimatedWidget {
   const ShowBelksProgressIndicator(
-      {required AnimationController animationController})
+      {Key? key, required AnimationController animationController})
       : super(
+            key: key,
             listenable:
                 animationController); //тут можно прописать Tween и далее импортировать анимацию
 

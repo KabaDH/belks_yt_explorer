@@ -48,7 +48,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
     _initChannel();
     _getVersionInfo();
     _setLogoOpacity();
-    ref.read(userProvider.notifier).initUser();
+    // ref.read(userProvider.notifier).initUser();
   }
 
   @override
