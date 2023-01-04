@@ -3,7 +3,6 @@ import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 
@@ -92,23 +91,31 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          'Play sound when the screen is turned off ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        ),
+                       const Flexible(
+                         flex: 3,
+                         child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            'Play sound when the screen is turned off ',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
                       ),
-                      Switch(
-                        onChanged: (bool value) {
-                          ref
-                              .read(userProvider.notifier)
-                              .copyWith(canPlayBlackScreen: value);
-                        },
-                        value: user.canPlayBlackScreen,
+                       ),
+                      Flexible(
+                        flex: 1,
+                        child: Center(
+                          child: Switch(
+                            onChanged: (bool value) {
+                              ref
+                                  .read(userProvider.notifier)
+                                  .copyWith(canPlayBlackScreen: value);
+                            },
+                            value: user.canPlayBlackScreen,
+                          ),
+                        ),
                       ),
                     ]),
               ),
