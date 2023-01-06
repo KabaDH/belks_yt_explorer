@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:belks_tube/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:riverpod/riverpod.dart';
 
 final openPopupProvider = StateProvider<bool>((ref) {
   return false;
@@ -19,7 +18,7 @@ class UserRepo extends StateNotifier<User> {
 
   final Ref _ref;
 
-  SharedPreferences get prefs => _ref.read(sharedPreferencesProvider);
+  SharedPreferences get prefs => _ref.read(prefsProvider);
 
   void initUser() async {
     if (prefs.containsKey('canPlayBlackScreen')) {

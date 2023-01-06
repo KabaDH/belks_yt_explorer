@@ -11,6 +11,36 @@
 .svn/
 *.lock
 *.g.dart
+.env
+*.apk
+*.ap_
+*.aab
+/*/out
+/*/*/build
+/*/*/production
+*~
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+/build
+/captures
+.externalNativeBuild
+*/build/*
+
+# files for the dex VM
+*.dex
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
 
 # IntelliJ related
 *.iml
@@ -89,6 +119,15 @@ app.*.map.json
 **/android/**/GeneratedPluginRegistrant.java
 **/android/key.properties
 **/android/app/build/
+
+# Android Studio
+.idea
+.navigation
+captures/
+output.json
+
+#NDK
+obj/
 
 # macOS
 **/Flutter/ephemeral/

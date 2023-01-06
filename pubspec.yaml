@@ -51,6 +51,7 @@ dependencies:
   intl: ^0.17.0
   dio: ^4.0.6
   riverpod_annotation:
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:

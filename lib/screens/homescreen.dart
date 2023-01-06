@@ -1,3 +1,4 @@
+import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -46,9 +47,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
         // })                 // от контроллера у нас нет
         ;
     _initChannel();
-    _getVersionInfo();
     _setLogoOpacity();
-    // ref.read(userProvider.notifier).initUser();
   }
 
   @override
@@ -67,12 +66,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
     setState(() {
       _logoOpacity = newOpacity;
     });
-  }
-
-  _getVersionInfo() async {
-    PackageInfo _packageInfo = await PackageInfo.fromPlatform();
-    debugPrint('Version info init passed');
-    packageInfo = _packageInfo;
   }
 
   _initChannel() async {
@@ -526,8 +519,8 @@ class HomeScreenState extends ConsumerState<HomeScreen>
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => InfoScreen(
-                          appBuild: packageInfo.buildNumber,
-                          appVersion: packageInfo.version,
+                          appBuild: AppConfig.instance.buildNumber,
+                          appVersion: AppConfig.instance.version,
                         )));
               },
               icon: const Icon(Icons.settings))

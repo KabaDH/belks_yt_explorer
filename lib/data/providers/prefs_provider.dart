@@ -1,6 +1,17 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-/// set this provider on App init stage
-final sharedPreferencesProvider =
-Provider<SharedPreferences>((ref) => throw UnimplementedError());
+part 'prefs_provider.g.dart';
+
+late final SharedPreferences _perfs;
+
+Future<void> initSharedPreferences() async {
+  _perfs = await SharedPreferences.getInstance();
+}
+
+
+/// init this provider in main
+@riverpod
+SharedPreferences prefs(PrefsRef ref) => _perfs;
+
+// final sharedPreferencesProvider = Provider<SharedPreferences>((_) => _perfs);
