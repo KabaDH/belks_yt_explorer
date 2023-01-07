@@ -1,9 +1,9 @@
 import 'package:belks_tube/data/providers/app_config.dart';
-import 'package:belks_tube/data/providers/prefs_provider.dart';
+import 'package:belks_tube/data/repo/local/prefs_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'data/providers/dio_provider.dart';
+import 'data/repo/remote/http/dio_provider.dart';
 import 'screens/screens.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';

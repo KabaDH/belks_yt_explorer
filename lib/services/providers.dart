@@ -1,4 +1,4 @@
-import 'package:belks_tube/data/providers/prefs_provider.dart';
+import 'package:belks_tube/data/repo/local/prefs_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:belks_tube/models/models.dart';

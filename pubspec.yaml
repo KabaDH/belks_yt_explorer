@@ -52,6 +52,8 @@ dependencies:
   dio: ^4.0.6
   riverpod_annotation:
   flutter_dotenv: ^5.0.2
+  retrofit: ^3.3.1
+  freezed_annotation: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +68,9 @@ dev_dependencies:
   change_app_package_name: ^1.1.0
   build_runner:
   riverpod_generator:
+  json_serializable: ^6.5.4
+  retrofit_generator: ^4.2.0
+  freezed: ^2.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

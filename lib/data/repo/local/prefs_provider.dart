@@ -13,5 +13,3 @@ Future<void> initSharedPreferences() async {
 /// init this provider in main
 @riverpod
 SharedPreferences prefs(PrefsRef ref) => _perfs;
-
-// final sharedPreferencesProvider = Provider<SharedPreferences>((_) => _perfs);
