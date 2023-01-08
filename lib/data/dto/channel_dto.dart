@@ -1,13 +1,17 @@
+import 'package:belks_tube/core/helpers.dart';
+import 'package:belks_tube/domain/data_failures.dart';
+import 'package:belks_tube/models/channel_model.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'channel_dto.g.dart';
 
 @JsonSerializable()
 class ChannelResponseDto {
-  ChannelResponseDto({this.errors, this.items});
+  ChannelResponseDto({this.error, this.items});
 
-  final Map<String, dynamic>? errors;
-  final List<Map<String, dynamic>>? items;
+  final Map<String, dynamic>? error;
+  final List<ChannelDto>? items;
 
   // Map<String, dynamic> data = json.decode(response.body)['items'][0];
   // throw json.decode(response.body)['error']['message'];
@@ -19,7 +23,7 @@ class ChannelResponseDto {
 
   @override
   String toString() {
-    return 'ChannelResponseDto{items: ${items.toString()}, errors: ${errors.toString()}';
+    return 'ChannelResponseDto{items: ${items.toString()}, errors: ${error.toString()}';
   }
 }
 
@@ -47,5 +51,27 @@ class ChannelDto {
   @override
   String toString() {
     return 'ChannelDto{id: $id, snippet: ${snippet.toString()}, statistics: ${statistics.toString()}, contentDetails: ${contentDetails.toString()}';
+  }
+}
+
+extension ChannelResponseDtoX on ChannelResponseDto {
+  Either<DataFailures, Channel> toDomain() {
+    return safeToDomain(() {
+      final channelDto = items?[0];
+      if (channelDto == null) {
+        return const Left(DataFailures.error('channel is null'));
+      }
+      final Channel channel = Channel(
+          id: channelDto.id ?? '',
+          title: channelDto.snippet?['title'] ?? '',
+          profilePictureUrl:
+              channelDto.snippet?['thumbnails']['default']['url'] ?? '',
+          subscriberCount:
+              channelDto.statistics?['subscriberCount'] ?? 'hidden',
+          videoCount: channelDto.statistics?['videoCount'] ?? 0,
+          uploadPlaylistId:
+              channelDto.contentDetails?['relatedPlaylists']['uploads'] ?? '');
+      return Right(channel);
+    }, errors: error, items: items);
   }
 }

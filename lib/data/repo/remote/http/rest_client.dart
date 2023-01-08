@@ -13,4 +13,12 @@ abstract class RestClient {
     @Query('id') required int channelId,
     @Query('part') String part = 'snippet,contentDetails,statistics',
   });
+
+  @POST('/youtube/v3/playlistItems')
+  Future<ChannelResponseDto> fetchVideosFromPlayList({
+    @Query('playlistId') required int channelId,
+    @Query('part') String part = 'snippet',
+    @Query('maxResults') required int maxResults,
+    @Query('pageToken') required String pageToken,
+  });
 }

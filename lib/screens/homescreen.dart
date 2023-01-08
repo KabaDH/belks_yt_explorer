@@ -573,8 +573,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
               child: NotificationListener<ScrollNotification>(
                 onNotification: (ScrollNotification scrollDetails) {
                   if (!_needMoreVideos &&
-                      _channel.videos!.length !=
-                          int.parse(_channel.videoCount) &&
+                      _channel.videos!.length != _channel.videoCount &&
                       scrollDetails.metrics.pixels ==
                           scrollDetails.metrics.maxScrollExtent) {
                     _loadMoreVideos();

@@ -57,5 +57,5 @@ Future _onError(DioError e, handler) async {
 }
 
 Future _setHeaders(RequestOptions options) async {
-  options.headers['key'] = AppConfig.apiKey;
+  options.queryParameters['key'] = AppConfig.apiKey;
 }
