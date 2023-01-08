@@ -176,6 +176,9 @@ obj/
 # Coverage
 coverage/
 
+# Freezed
+*.freezed.dart
+
 #My files
 /android/key.properties
 /android/app/upload-keystore.jks
