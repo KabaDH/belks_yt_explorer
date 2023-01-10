@@ -10,12 +10,14 @@ abstract class RestClient {
 
   @POST('/youtube/v3/channels')
   Future<ChannelResponseDto> fetchChannel({
+    @Query('key') required String key,
     @Query('id') required int channelId,
     @Query('part') String part = 'snippet,contentDetails,statistics',
   });
 
   @POST('/youtube/v3/playlistItems')
   Future<ChannelResponseDto> fetchVideosFromPlayList({
+    @Query('key') required String key,
     @Query('playlistId') required int channelId,
     @Query('part') String part = 'snippet',
     @Query('maxResults') required int maxResults,

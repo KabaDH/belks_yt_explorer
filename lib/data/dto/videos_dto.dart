@@ -62,9 +62,9 @@ class VideoDto {
   final Map<String, dynamic>? publishedAt;
 
   factory VideoDto.fromJson(Map<String, dynamic> json) =>
-      _$VideoSnippetDtoFromJson(json);
+      _$VideoDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$VideoSnippetDtoToJson(this);
+  Map<String, dynamic> toJson() => _$VideoDtoToJson(this);
 
   @override
   String toString() {
