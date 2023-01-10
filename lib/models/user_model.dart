@@ -4,5 +4,5 @@ class User {
 
   User({required this.name, this.canPlayBlackScreen = false});
 
-  static get defUser => User(name: 'AnonymousUser');
+  static User get defUser => User(name: 'AnonymousUser');
 }

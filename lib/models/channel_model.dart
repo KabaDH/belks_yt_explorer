@@ -5,8 +5,10 @@ class Channel {
   final String title;
   final String profilePictureUrl;
   final String subscriberCount;
-  final String videoCount;
+  final int videoCount;
   final String uploadPlaylistId;
+  final int? maxResults;
+  final String? pageToken;
   List<Video>? videos;
 
   Channel({
@@ -16,6 +18,8 @@ class Channel {
     required this.subscriberCount,
     required this.videoCount,
     required this.uploadPlaylistId,
+    this.maxResults,
+    this.pageToken,
     this.videos,
   });
 
@@ -25,8 +29,15 @@ class Channel {
       title: map['snippet']['title'],
       profilePictureUrl: map['snippet']['thumbnails']['default']['url'],
       subscriberCount: map['statistics']['subscriberCount'] ?? 'hidden',
-      videoCount: map['statistics']['videoCount'],
+      videoCount: int.tryParse(map['statistics']['videoCount']) ?? 0,
       uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
     );
   }
+  factory Channel.initial() => Channel(
+      id: '0',
+      title: '',
+      profilePictureUrl: '',
+      subscriberCount: 'hidden',
+      videoCount: 0,
+      uploadPlaylistId: '');
 }

@@ -1,11 +1,11 @@
 import 'package:belks_tube/data/providers/app_config.dart';
+import 'package:belks_tube/screens/info_screen.dart';
 import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:belks_tube/models/models.dart';
-import 'screens.dart';
 import 'package:belks_tube/services/api_services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';

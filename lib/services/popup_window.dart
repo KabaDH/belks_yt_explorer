@@ -277,7 +277,13 @@ class _PopUpWindowState extends State<PopUpWindow> {
                           icon: const Icon(
                             Icons.close_outlined,
                             size: 25,
-                            color: Colors.black54,
+                            color: Colors.black,
+                            shadows: [
+                              Shadow(
+                                  color: Colors.white70,
+                                  offset: Offset(0, 0),
+                                  blurRadius: 3)
+                            ],
                           ),
                           onPressed: () {
                             AndroidWindow.post('closed');
@@ -297,7 +303,13 @@ class _PopUpWindowState extends State<PopUpWindow> {
                           icon: Icon(
                             Icons.fullscreen_exit_outlined,
                             size: 25,
-                            color: Colors.black54,
+                            color: Colors.black,
+                            shadows: [
+                              Shadow(
+                                  color: Colors.white70,
+                                  offset: Offset(0, 0),
+                              blurRadius: 3)
+                            ],
                           ),
                           onPressed: AndroidWindow.launchApp,
                         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-floatingActionButton(BuildContext context) {
+Widget floatingActionButton(BuildContext context) {
   return Container(
     margin: const EdgeInsets.only(right: 20),
     padding: const EdgeInsets.only(left: 5),
