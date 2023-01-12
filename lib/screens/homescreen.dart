@@ -1,5 +1,4 @@
 import 'package:belks_tube/data/providers/app_config.dart';
-import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +33,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
   TextEditingController textSearchController = TextEditingController();
   late PackageInfo packageInfo;
   late AnimationController animationController;
-  double _logoOpacity = 1.0;
 
   @override
   void initState() {
@@ -47,7 +45,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
         // })                 // от контроллера у нас нет
         ;
     _initChannel();
-    _setLogoOpacity();
   }
 
   @override
@@ -55,17 +52,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
     super.dispose();
     animationController.dispose();
     textSearchController.dispose();
-  }
-
-  //Hide logo after we have loaded the screen
-  Future<void> _setLogoOpacity() async {
-    double newOpacity =
-        await Future.delayed(const Duration(milliseconds: 1), () {
-      return 0.0;
-    });
-    setState(() {
-      _logoOpacity = newOpacity;
-    });
   }
 
   _initChannel() async {
@@ -128,9 +114,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
     setState(() {
       _channel.videos = updatedVideos;
       _isLoading = false;
-      // dont forget show and hide tube logo
-      _logoOpacity = 1.0;
-      _setLogoOpacity();
     });
   }
 

@@ -1,4 +1,5 @@
 import 'package:belks_tube/data/dto/channel_dto.dart';
+import 'package:belks_tube/data/dto/videos_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -11,14 +12,14 @@ abstract class RestClient {
   @POST('/youtube/v3/channels')
   Future<ChannelResponseDto> fetchChannel({
     @Query('key') required String key,
-    @Query('id') required int channelId,
+    @Query('id') required String channelId,
     @Query('part') String part = 'snippet,contentDetails,statistics',
   });
 
   @POST('/youtube/v3/playlistItems')
-  Future<ChannelResponseDto> fetchVideosFromPlayList({
+  Future<VideosResponseDto> fetchVideosFromPlayList({
     @Query('key') required String key,
-    @Query('playlistId') required int channelId,
+    @Query('playlistId') required String channelId,
     @Query('part') String part = 'snippet',
     @Query('maxResults') required int maxResults,
     @Query('pageToken') required String pageToken,

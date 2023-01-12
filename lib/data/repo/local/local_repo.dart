@@ -11,11 +11,11 @@ part 'local_repo.g.dart';
 LocalRepo localRepo(LocalRepoRef ref) => LocalRepo(ref);
 
 class LocalRepo implements BaseLocalRepo {
-  LocalRepo(this.ref);
+  LocalRepo(this._ref);
 
-  final Ref ref;
+  final Ref _ref;
 
-  SharedPreferences get prefs => ref.read(prefsProvider);
+  SharedPreferences get prefs => _ref.read(prefsProvider);
 
   @override
   String getDefChannelId() {

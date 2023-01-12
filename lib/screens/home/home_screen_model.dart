@@ -12,22 +12,25 @@ class HomeScreenModel with _$HomeScreenModel {
   const factory HomeScreenModel(
       {required String channelId,
       required List<Channel> favoriteChannels,
+      required List<String> favoriteChannelsIds,
       required String defChannelId,
       required Channel channel,
       required bool isLoading,
       required bool needMoreVideos,
-      required bool favChannelsLoading,
-      required List<SearchChannel> searchChannels,
-      required double logoOpacity}) = _HomeScreenModel;
+      required List<SearchChannel> searchChannels}) = _HomeScreenModel;
 
+  /// TODO: remove favoriteChannelsIds (work with to/from json for prefs)
   static HomeScreenModel get defModel => HomeScreenModel(
-      channelId: '',
-      favoriteChannels: [],
-      defChannelId: AppConfig.defChannel,
-      channel: Channel.initial(),
-      isLoading: false,
-      needMoreVideos: false,
-      favChannelsLoading: false,
-      searchChannels: [],
-      logoOpacity: 1.0);
+        channelId: '',
+        favoriteChannels: [],
+        favoriteChannelsIds: [AppConfig.defChannel],
+        defChannelId: AppConfig.defChannel,
+        channel: Channel.initial(),
+        isLoading: true,
+        needMoreVideos: false,
+        searchChannels: [],
+      );
+
+  bool get favChannelsLoading =>
+      favoriteChannels.length == favoriteChannelsIds.length;
 }

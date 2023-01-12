@@ -24,3 +24,17 @@ Either<DataFailures, R> safeToDomain<R>(
     return left(DataFailures.error(e.toString()));
   }
 }
+
+mixin RepositoryImplMixin {
+  Future<Either<DataFailures, R>> safeFunc<R>(
+      Future<Either<DataFailures, R>> Function() f) async {
+    try {
+      final r = await f.call();
+      return r;
+    } on Error catch (e) {
+      return left(DataFailures.error(e.toString()));
+    } on Exception catch (e) {
+      return left(DataFailures.error(e.toString()));
+    }
+  }
+}

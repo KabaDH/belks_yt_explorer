@@ -1,10 +1,13 @@
+import 'package:belks_tube/core/helpers.dart';
 import 'package:belks_tube/data/dto/channel_dto.dart';
+import 'package:belks_tube/data/dto/videos_dto.dart';
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/data/repo/remote/base_remote_repository.dart';
 import 'package:belks_tube/data/repo/remote/http/api_client.dart';
 import 'package:belks_tube/data/repo/remote/http/rest_client.dart';
 import 'package:belks_tube/domain/data_failures.dart';
 import 'package:belks_tube/models/channel_model.dart';
+import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -15,33 +18,32 @@ part 'remote_repo.g.dart';
 RemoteRepo remoteRepo(RemoteRepoRef ref) => RemoteRepo(ref);
 
 class RemoteRepo with RepositoryImplMixin implements BaseRemoteRepo {
-  RemoteRepo(this.ref);
+  RemoteRepo(this._ref);
 
-  final Ref ref;
+  final Ref _ref;
 
-  RestClient get client => ref.read(apiClientProvider);
+  RestClient get _client => _ref.read(apiClientProvider);
   final String _key = AppConfig.apiKey;
 
   @override
   Future<Either<DataFailures, Channel>> fetchChannel(
-      {required int channelId}) async {
+      {required String channelId}) async {
     return safeFunc(() async {
-      final dto = await client.fetchChannel(channelId: channelId, key: _key);
+      final dto = await _client.fetchChannel(channelId: channelId, key: _key);
       return dto.toDomain();
     });
   }
-}
 
-mixin RepositoryImplMixin {
-  Future<Either<DataFailures, R>> safeFunc<R>(
-      Future<Either<DataFailures, R>> Function() f) async {
-    try {
-      final r = await f.call();
-      return r;
-    } on Error catch (e) {
-      return left(DataFailures.error(e.toString()));
-    } on Exception catch (e) {
-      return left(DataFailures.error(e.toString()));
-    }
+  @override
+  Future<Either<DataFailures, Videos>> fetchVideosFromPlayList(
+      {required String channelId, int? maxResults, String? pageToken}) {
+    return safeFunc(() async {
+      final dto = await _client.fetchVideosFromPlayList(
+          key: _key,
+          channelId: channelId,
+          maxResults: maxResults ?? 8,
+          pageToken: pageToken ?? '');
+      return dto.toDomain();
+    });
   }
 }
