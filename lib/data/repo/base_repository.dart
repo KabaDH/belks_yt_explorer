@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class BaseRepo {
   // Local
-  String getDefChannelId();
+  String getMainChannelId();
 
   List<String> getFavoriteChannelsIds();
 

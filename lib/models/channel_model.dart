@@ -1,28 +1,25 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'models.dart';
+part 'channel_model.freezed.dart';
 
-class Channel {
-  final String id;
-  final String title;
-  final String profilePictureUrl;
-  final String subscriberCount;
-  final int videoCount;
-  final String uploadPlaylistId;
-  final int? maxResults;
-  final String? pageToken;
-  List<Video>? videos;
+@freezed
+class Channel with _$Channel {
+  const Channel._();
 
-  Channel({
-    required this.id,
-    required this.title,
-    required this.profilePictureUrl,
-    required this.subscriberCount,
-    required this.videoCount,
-    required this.uploadPlaylistId,
-    this.maxResults,
-    this.pageToken,
-    this.videos,
-  });
+  const factory Channel({
+    required String id,
+    required String title,
+    required String profilePictureUrl,
+    required String subscriberCount,
+    required int videoCount,
+    required String uploadPlaylistId,
+    int? maxResults,
+    String? pageToken,
+    List<Video>? videos,
+  }) = _Channel;
 
+  /// TODO: del in 2.0
   factory Channel.fromMap(Map<String, dynamic> map) {
     return Channel(
       id: map['id'],
@@ -33,7 +30,8 @@ class Channel {
       uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
     );
   }
-  factory Channel.initial() => Channel(
+
+  factory Channel.initial() => const Channel(
       id: '0',
       title: '',
       profilePictureUrl: '',

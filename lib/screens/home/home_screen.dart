@@ -126,7 +126,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
         .fetchVideosFromPlayList(
             playListId: _channel.uploadPlaylistId, resetToken: true);
     setState(() {
-      _channel.videos = updatedVideos;
+      _channel = _channel.copyWith(videos: updatedVideos);
       _isLoading = false;
       // dont forget show and hide tube logo
       _logoOpacity = 1.0;

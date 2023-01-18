@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:belks_tube/data/repo/repo.dart';
 import 'package:belks_tube/models/channel_model.dart';
 import 'package:belks_tube/screens/home/home_screen_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreenControllerNotifier extends StateNotifier<HomeScreenModel> {
@@ -9,6 +10,11 @@ class HomeScreenControllerNotifier extends StateNotifier<HomeScreenModel> {
     initChannel();
   }
   final Ref _ref;
+  static const int maxResults = 8;
+  String _nextPageToken = '';
+  String _lastPlayListId = '';
+  String _lastSearchRequest = '';
+  String _nextPageTokenSearch = '';
 
   static final provider =
       StateNotifierProvider<HomeScreenControllerNotifier, HomeScreenModel>(
@@ -35,10 +41,26 @@ class HomeScreenControllerNotifier extends StateNotifier<HomeScreenModel> {
 
   Future<void> fetchChannel(
       {required String channelId, bool isMainChannel = false}) async {
+    // Get channel info
     final fetchedChannel = await repo.fetchChannel(channelId: channelId);
     fetchedChannel.fold((l) => log(l.toString(), name: 'fetchChannelError'),
-        (r) {
-      isMainChannel ? setNewMainChannel(r) : addChannelToFavorites(r);
+        (rChannel) async {
+      // Get Videos for channel
+      debugPrint('💡Repo.fetchChannel :: uploadPlaylistId :'
+          ' ${rChannel.uploadPlaylistId}');
+      final videos = await repo.fetchVideosFromPlayList(
+          channelId: channelId,
+          maxResults: maxResults,
+          pageToken: _nextPageToken);
+
+      videos.fold(
+          (l) => debugPrint(
+              '💡HomeScreenControllerNotifier.fetchChannel :: videos is Left :'
+              ' ${l.toString()}'), (rVideos) {
+        final res = rChannel.copyWith(videos: rVideos.videos);
+        _nextPageToken = rVideos.nextPageToken;
+        isMainChannel ? setNewMainChannel(res) : addChannelToFavorites(res);
+      });
     });
   }
 
@@ -46,7 +68,7 @@ class HomeScreenControllerNotifier extends StateNotifier<HomeScreenModel> {
 
   /// load def Channel
   Future<void> initMainChannel() async {
-    final mainChannelId = repo.getDefChannelId();
+    final mainChannelId = repo.getMainChannelId();
     state = state.copyWith(defChannelId: mainChannelId);
     await fetchChannel(channelId: state.defChannelId, isMainChannel: true);
   }

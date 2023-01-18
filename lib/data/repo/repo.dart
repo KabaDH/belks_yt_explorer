@@ -5,6 +5,7 @@ import 'package:belks_tube/domain/data_failures.dart';
 import 'package:belks_tube/models/channel_model.dart';
 import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,7 +24,7 @@ class Repo implements BaseRepo {
 
   // Local
   @override
-  String getDefChannelId() => _localRepo.getDefChannelId();
+  String getMainChannelId() => _localRepo.getDefChannelId();
 
   @override
   List<String> getFavoriteChannelsIds() => _localRepo.getFavoriteChannelsIds();
@@ -36,6 +37,9 @@ class Repo implements BaseRepo {
 
   @override
   Future<Either<DataFailures, Videos>> fetchVideosFromPlayList(
-          {required String channelId, int? maxResults, String? pageToken}) =>
-      _remoteRepo.fetchVideosFromPlayList(channelId: channelId);
+          {required String channelId,
+          int? maxResults,
+          String? pageToken}) async =>
+      await _remoteRepo.fetchVideosFromPlayList(
+          channelId: channelId, maxResults: maxResults, pageToken: pageToken);
 }

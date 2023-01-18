@@ -42,12 +42,12 @@ class APIService {
       ///Fetch first batch of videos from uploads playlist
       print(channel.uploadPlaylistId);
 
-      channel.videos =
+      final videos =
           await fetchVideosFromPlayList(playListId: channel.uploadPlaylistId);
       // channel.videos!.forEach((video) {
       //   print(video.title);
       // });
-      return channel;
+      return channel.copyWith(videos: videos);
     } else {
       throw json.decode(response.body)['error']['message'];
     }
