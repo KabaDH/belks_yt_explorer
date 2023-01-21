@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dio_provider.g.dart';
@@ -17,6 +18,9 @@ void initDio() {
   dioInit.interceptors.add(InterceptorsWrapper(
     onRequest: (options, handler) async {
       await _setHeaders(options);
+      log('${options.method} ${options.uri}',
+          name: 'HTTP REQUEST');
+
       return handler.next(options);
     },
     onResponse: (response, handler) async {
@@ -24,9 +28,10 @@ void initDio() {
       log(
           respString.substring(
             0,
-            respString.length > 500 ? 500 : respString.length - 1,
+            respString.length > 500 ? respString.length : respString.length,
           ),
           name: 'HTTP RESPONSE');
+
       return handler.next(response);
     },
     onError: _onError,
@@ -44,7 +49,9 @@ void initDio() {
 }
 
 Future _onError(DioError e, handler) async {
-  log('Dio._onError: ${e.response} / ${e.response?.statusCode}');
+  log('Dio._onError:: error: ${e.error},  type ${e.type.toString()}');
+  log('Dio._onError:: ${e.requestOptions.method} ${e.requestOptions.uri}');
+
   final respNew = Response(
       requestOptions:
           e.response?.requestOptions ?? RequestOptions(path: 'unknown path'),
@@ -57,5 +64,5 @@ Future _onError(DioError e, handler) async {
 }
 
 Future _setHeaders(RequestOptions options) async {
-  // options.queryParameters['key'] = AppConfig.apiKey;
+  options.queryParameters['key'] = AppConfig.apiKey;
 }

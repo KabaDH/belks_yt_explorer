@@ -9,19 +9,20 @@ part 'rest_client.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
-  @POST('/youtube/v3/channels')
+  // Follow the order of the fields in request!!!
+  // (part => maxResults => playlistId ...)
+
+  @GET('/youtube/v3/channels')
   Future<ChannelResponseDto> fetchChannel({
-    @Query('key') required String key,
-    @Query('id') required String channelId,
     @Query('part') String part = 'snippet,contentDetails,statistics',
+    @Query('id') required String channelId,
   });
 
-  @POST('/youtube/v3/playlistItems')
+  @GET('/youtube/v3/playlistItems')
   Future<VideosResponseDto> fetchVideosFromPlayList({
-    @Query('key') required String key,
-    @Query('playlistId') required String channelId,
     @Query('part') String part = 'snippet',
     @Query('maxResults') required int maxResults,
-    @Query('pageToken') required String pageToken,
+    @Query('playlistId') required String playlistId,
+    @Query('pageToken') String? pageToken,
   });
 }

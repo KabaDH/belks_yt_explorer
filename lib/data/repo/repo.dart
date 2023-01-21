@@ -37,9 +37,9 @@ class Repo implements BaseRepo {
 
   @override
   Future<Either<DataFailures, Videos>> fetchVideosFromPlayList(
-          {required String channelId,
+          {required String playlistId,
           int? maxResults,
           String? pageToken}) async =>
       await _remoteRepo.fetchVideosFromPlayList(
-          channelId: channelId, maxResults: maxResults, pageToken: pageToken);
+          playlistId: playlistId, maxResults: maxResults, pageToken: pageToken);
 }

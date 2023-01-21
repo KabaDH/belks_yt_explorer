@@ -1,16 +1,16 @@
-class Video {
-  final String id;
-  final String title;
-  final String thumbnailUrl;
-  final String channelTitle;
-  final String publishedAt;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Video(
-      {required this.id,
-      required this.title,
-      required this.thumbnailUrl,
-      required this.channelTitle, required this.publishedAt,
-      });
+part 'video_model.freezed.dart';
+part 'video_model.g.dart';
+
+@freezed
+class Video with _$Video {
+  const factory Video(
+      {required String id,
+      required String title,
+      required String thumbnailUrl,
+      required String channelTitle,
+      required String publishedAt}) = _Video;
 
   factory Video.fromMap(Map<String, dynamic> snippet) {
     return Video(
@@ -21,4 +21,6 @@ class Video {
       publishedAt: snippet['publishedAt'].toString(),
     );
   }
+
+  factory Video.fromJson(Map<String, dynamic> json) => _$VideoFromJson(json);
 }

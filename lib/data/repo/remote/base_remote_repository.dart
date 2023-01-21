@@ -9,7 +9,7 @@ abstract class BaseRemoteRepo {
   });
 
   Future<Either<DataFailures, Videos>> fetchVideosFromPlayList({
-    required String channelId,
+    required String playlistId,
     int? maxResults,
     String? pageToken,
   });

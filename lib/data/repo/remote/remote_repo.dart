@@ -9,6 +9,7 @@ import 'package:belks_tube/domain/data_failures.dart';
 import 'package:belks_tube/models/channel_model.dart';
 import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,26 +24,25 @@ class RemoteRepo with RepositoryImplMixin implements BaseRemoteRepo {
   final Ref _ref;
 
   RestClient get _client => _ref.read(apiClientProvider);
-  final String _key = AppConfig.apiKey;
 
   @override
   Future<Either<DataFailures, Channel>> fetchChannel(
       {required String channelId}) async {
     return safeFunc(() async {
-      final dto = await _client.fetchChannel(channelId: channelId, key: _key);
+      final dto = await _client.fetchChannel(channelId: channelId);
       return dto.toDomain();
     });
   }
 
   @override
   Future<Either<DataFailures, Videos>> fetchVideosFromPlayList(
-      {required String channelId, int? maxResults, String? pageToken}) {
+      {required String playlistId, int? maxResults, String? pageToken}) {
     return safeFunc(() async {
       final dto = await _client.fetchVideosFromPlayList(
-          key: _key,
-          channelId: channelId,
+          playlistId: playlistId,
           maxResults: maxResults ?? 8,
-          pageToken: pageToken ?? '');
+          pageToken: pageToken);
+      debugPrint('💡RemoteRepo.fetchVideosFromPlayList :: $dto');
       return dto.toDomain();
     });
   }

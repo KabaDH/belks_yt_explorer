@@ -1,5 +1,5 @@
 import 'dart:io' show Platform;
-import 'package:belks_tube/screens/homescreen.dart';
+import 'package:belks_tube/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';

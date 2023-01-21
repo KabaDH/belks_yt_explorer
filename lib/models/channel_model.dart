@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'models.dart';
+
 part 'channel_model.freezed.dart';
+part 'channel_model.g.dart';
 
 @freezed
 class Channel with _$Channel {
@@ -14,21 +16,21 @@ class Channel with _$Channel {
     required String subscriberCount,
     required int videoCount,
     required String uploadPlaylistId,
+    required List<Video> videos,
     int? maxResults,
     String? pageToken,
-    List<Video>? videos,
   }) = _Channel;
 
   /// TODO: del in 2.0
   factory Channel.fromMap(Map<String, dynamic> map) {
     return Channel(
-      id: map['id'],
-      title: map['snippet']['title'],
-      profilePictureUrl: map['snippet']['thumbnails']['default']['url'],
-      subscriberCount: map['statistics']['subscriberCount'] ?? 'hidden',
-      videoCount: int.tryParse(map['statistics']['videoCount']) ?? 0,
-      uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
-    );
+        id: map['id'],
+        title: map['snippet']['title'],
+        profilePictureUrl: map['snippet']['thumbnails']['default']['url'],
+        subscriberCount: map['statistics']['subscriberCount'] ?? 'hidden',
+        videoCount: int.tryParse(map['statistics']['videoCount']) ?? 0,
+        uploadPlaylistId: map['contentDetails']['relatedPlaylists']['uploads'],
+        videos: []);
   }
 
   factory Channel.initial() => const Channel(
@@ -37,5 +39,9 @@ class Channel with _$Channel {
       profilePictureUrl: '',
       subscriberCount: 'hidden',
       videoCount: 0,
-      uploadPlaylistId: '');
+      uploadPlaylistId: '',
+      videos: []);
+
+  factory Channel.fromJson(Map<String, dynamic> json) =>
+      _$ChannelFromJson(json);
 }

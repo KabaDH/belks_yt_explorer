@@ -100,9 +100,8 @@ class HomeScreenState extends ConsumerState<HomeScreen>
     _needMoreVideos = true;
     List<Video> moreVideos = await APIService.instance
         .fetchVideosFromPlayList(playListId: _channel.uploadPlaylistId);
-    setState(() {
-      _channel.videos!.addAll(moreVideos);
-    });
+    _channel = _channel.copyWith(videos: _channel.videos! + moreVideos);
+    setState(() {});
     _needMoreVideos = false;
   }
 

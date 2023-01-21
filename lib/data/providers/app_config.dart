@@ -7,7 +7,7 @@ class AppConfig {
   static final AppConfig instance = AppConfig._instantiate();
 
   static String get apiKey => dotenv.env['API_KEY'] ?? '';
-  static String get baseUrl => dotenv.env['API_KEY'] ?? '';
+  static String get baseUrl => dotenv.env['BASE_URL'] ?? '';
   static String get defChannel => dotenv.env['DEF_CHANNEL'] ?? '';
 
   late final PackageInfo _packageInfo;

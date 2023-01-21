@@ -2,6 +2,7 @@ import 'package:belks_tube/core/helpers.dart';
 import 'package:belks_tube/domain/data_failures.dart';
 import 'package:belks_tube/models/channel_model.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'channel_dto.g.dart';
@@ -68,9 +69,10 @@ extension ChannelResponseDtoX on ChannelResponseDto {
               channelDto.snippet?['thumbnails']['default']['url'] ?? '',
           subscriberCount:
               channelDto.statistics?['subscriberCount'] ?? 'hidden',
-          videoCount: channelDto.statistics?['videoCount'] ?? 0,
+          videoCount: int.tryParse(channelDto.statistics?['videoCount']) ?? 0,
           uploadPlaylistId:
-              channelDto.contentDetails?['relatedPlaylists']['uploads'] ?? '');
+              channelDto.contentDetails?['relatedPlaylists']['uploads'] ?? '',
+          videos: []);
       return Right(channel);
     }, errors: error, items: items);
   }

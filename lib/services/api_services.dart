@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:belks_tube/models/models.dart';
 import 'package:belks_tube/utilites/keys.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {
@@ -34,6 +35,8 @@ class APIService {
 
     ///Get Channel
     var response = await http.get(uri, headers: headers);
+
+    debugPrint('💡APIService.fetchChannel :: ${response.request.toString()}');
 
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body)['items'][0];
@@ -68,7 +71,6 @@ class APIService {
       _nextPageToken = '';
     }
 
-
     Map<String, String> parameters = {
       'part': 'snippet',
       'playlistId': playListId,
@@ -83,8 +85,12 @@ class APIService {
     );
 
     var response = await http.get(uri, headers: headers);
+    debugPrint(
+        '💡APIService.fetchVideosFromPlayList :: ${response.request.toString()}');
+
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
+      debugPrint('💡APIService.fetchVideosFromPlayList :: $data');
       _lastPlayListId = playListId;
       _nextPageToken = data['nextPageToken'] ?? '';
       List<dynamic> videosJson = data['items'];
