@@ -4,7 +4,6 @@ import 'package:belks_tube/models/models.dart';
 import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 import 'package:belks_tube/core/consts.dart';
 
 part 'videos_dto.g.dart';

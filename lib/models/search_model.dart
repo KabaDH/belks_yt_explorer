@@ -1,5 +1,3 @@
-import 'models.dart';
-
 class SearchChannel {
   final String id;
   final String title;

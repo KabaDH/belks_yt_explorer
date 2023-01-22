@@ -18,7 +18,7 @@ class HomeScreenModel with _$HomeScreenModel {
       required Channel channel,
       required bool isLoading,
       required bool favChannelsLoading,
-      required bool needMoreVideos,
+      required bool loadingVideos,
       required List<SearchChannel> searchChannels}) = _HomeScreenModel;
 
   /// TODO: remove favoriteChannelsIds (work with to/from json for prefs)
@@ -30,10 +30,7 @@ class HomeScreenModel with _$HomeScreenModel {
         channel: Channel.initial(),
         isLoading: true,
         favChannelsLoading: true,
-        needMoreVideos: false,
+        loadingVideos: false,
         searchChannels: [],
       );
-
-  // bool get favChannelsLoading =>
-  //     favoriteChannels.length == favoriteChannelsIds.length;
 }

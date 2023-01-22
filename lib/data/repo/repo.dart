@@ -3,9 +3,9 @@ import 'package:belks_tube/data/repo/local/local_repo.dart';
 import 'package:belks_tube/data/repo/remote/remote_repo.dart';
 import 'package:belks_tube/domain/data_failures.dart';
 import 'package:belks_tube/models/channel_model.dart';
+import 'package:belks_tube/models/search_model.dart';
 import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -49,4 +49,24 @@ class Repo implements BaseRepo {
           String? pageToken}) async =>
       await _remoteRepo.fetchVideosFromPlayList(
           playlistId: playlistId, maxResults: maxResults, pageToken: pageToken);
+
+  @override
+  Future<Either<DataFailures, List<SearchChannel>>> fetchSearchResults(
+          {required String searchRequest,
+          int? maxResults,
+          String? pageToken}) async =>
+      await _remoteRepo.fetchSearchResults(
+          searchRequest: searchRequest,
+          maxResults: maxResults,
+          pageToken: pageToken);
+
+  @override
+  Future<Either<DataFailures, String>> pingChannel(
+          {required String channel}) async =>
+      await _remoteRepo.pingChannel(channel: channel);
+
+  @override
+  Future<Either<DataFailures, String>> pingChannelUserName(
+          {required String userName}) async =>
+      await _remoteRepo.pingChannelUserName(userName: userName);
 }

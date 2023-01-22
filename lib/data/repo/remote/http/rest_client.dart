@@ -1,4 +1,6 @@
 import 'package:belks_tube/data/dto/channel_dto.dart';
+import 'package:belks_tube/data/dto/ping_channel_dto.dart';
+import 'package:belks_tube/data/dto/search_channel_dto.dart';
 import 'package:belks_tube/data/dto/videos_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -24,5 +26,22 @@ abstract class RestClient {
     @Query('maxResults') required int maxResults,
     @Query('playlistId') required String playlistId,
     @Query('pageToken') String? pageToken,
+  });
+
+  @GET('/youtube/v3/search')
+  Future<SearchChannelResponseDto> fetchSearchResults({
+    @Query('part') String part = 'snippet',
+    @Query('maxResults') required int maxResults,
+    @Query('q') required String searchRequest,
+    @Query('type') String type = 'channel',
+    @Query('pageToken') String? pageToken,
+  });
+
+  @GET('/youtube/v3/channels')
+  Future<PingChannelResponseDto> pingChannel({
+    @Query('part') String part = 'id',
+    @Query('id') String? channelId,
+    @Query('forUsername') String? userName,
+    @Query('maxResults') int maxResults = 3,
   });
 }

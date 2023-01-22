@@ -1,6 +1,8 @@
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/screens/home/home_screen_c.dart';
 import 'package:belks_tube/screens/home/widgets/build_favorites.dart';
+import 'package:belks_tube/screens/home/widgets/build_search_elems.dart';
+import 'package:belks_tube/screens/home/widgets/search_and_add_fav.dart';
 import 'package:belks_tube/screens/info_screen.dart';
 import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
@@ -21,20 +23,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class HomeScreenState extends ConsumerState<HomeScreen>
     with SingleTickerProviderStateMixin {
-  // late final String channelId = 'UCjzHeG1KWoonmf9d5KBvSiw';
-  // late List<String> favoriteChannelsID;
-  // List<Channel> favoriteChannels = [];
-  // late String defChannelId;
-  // late SharedPreferences storage;
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  //
-  // late Channel _channel; //загруженный канал в текущий момент
-  // bool _isLoading = true;
-  // bool _needMoreVideos = false;
-  // bool _favChannelsLoading = true;
-  // List<SearchChannel> searchChannels = []; //отображение каналов поиска
-  TextEditingController textSearchController = TextEditingController();
-  // late PackageInfo packageInfo;
   late AnimationController animationController;
 
   @override
@@ -53,217 +41,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
   void dispose() {
     super.dispose();
     animationController.dispose();
-    textSearchController.dispose();
   }
-
-  // _loadMoreVideos() async {
-  //   _needMoreVideos = true;
-  //   List<Video> moreVideos = await APIService.instance
-  //       .fetchVideosFromPlayList(playListId: _channel.uploadPlaylistId);
-  //   _channel = _channel.copyWith(videos: _channel.videos! + moreVideos);
-  //   setState(() {});
-  //   _needMoreVideos = false;
-  // }
-
-  _updateVideosList() async {
-    debugPrint('_updateVideosList');
-    // setState(() => _isLoading = true);
-    // List<Video> updatedVideos = await APIService.instance
-    //     .fetchVideosFromPlayList(
-    //         playListId: _channel.uploadPlaylistId, resetToken: true);
-    // setState(() {
-    //   _channel = _channel.copyWith(videos: updatedVideos);
-    //   _isLoading = false;
-    // });
-  }
-
-  // _loadMoreSearchResults() async {
-  //   List<SearchChannel> moreChannels = await APIService.instance
-  //       .fetchSearchResults(searchRequest: textSearchController.value.text);
-  //   setState(() {
-  //     searchChannels.addAll(moreChannels);
-  //   });
-  // }
-
-
-  // _newChannelInit(String c) async {
-  //   bool ping = await APIService.instance.pingChannel(channelId: c);
-  //   String pingUserID = await APIService.instance.pingChannelUser(userID: c);
-  //
-  //   _newChannelAccepted(String c) async {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //       content: Text('New channel added successfully'),
-  //       duration: Duration(seconds: 3),
-  //     ));
-  //
-  //     if (favoriteChannelsID.contains(c)) {
-  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //         content: Text('Can`t add - you have this channel in favorites'),
-  //         duration: Duration(seconds: 3),
-  //       ));
-  //     } else {
-  //       favoriteChannelsID.add(c);
-  //       Channel newchannel =
-  //           await APIService.instance.fetchChannel(channelId: c);
-  //       SharedPreferences prefs = await _prefs;
-  //       prefs.setString('defChannelId', c);
-  //       prefs.setStringList('favoriteChannelsID', favoriteChannelsID);
-  //
-  //       setState(() {
-  //         _channel = newchannel;
-  //         favoriteChannels.add(newchannel);
-  //       });
-  //     }
-  //   }
-  //
-  //   if (!ping) {
-  //     if (pingUserID == 'NoSuchUser') {
-  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //         content: Text('No such channel'),
-  //         duration: Duration(seconds: 3),
-  //       ));
-  //     } else {
-  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //         content: Text('Channel OK by UserID'),
-  //         duration: Duration(seconds: 3),
-  //       ));
-  //       _newChannelAccepted(pingUserID);
-  //     }
-  //   } else {
-  //     _newChannelAccepted(c); //Accepted by ChannelID
-  //   }
-  // }
-
-  // _menuAddFavSearch() {
-  //   return Container(
-  //       width: MediaQuery.of(context).size.width * 0.7,
-  //       padding: const EdgeInsets.all(10),
-  //       decoration: BoxDecoration(
-  //           color: Theme.of(context).primaryColor,
-  //           borderRadius: BorderRadius.circular(10)),
-  //       child: Column(
-  //         children: [
-  //           TextField(
-  //             controller: textSearchController,
-  //             onSubmitted: (newRequest) async {
-  //               List<SearchChannel> _newSearchResults = await APIService
-  //                   .instance
-  //                   .fetchSearchResults(searchRequest: newRequest);
-  //               setState(() {
-  //                 searchChannels = _newSearchResults;
-  //                 debugPrint(searchChannels.toString());
-  //               });
-  //             },
-  //             decoration: const InputDecoration(
-  //               hintText: 'Find more',
-  //             ),
-  //           ),
-  //         ],
-  //       ));
-  // }
-
-  // _buildSearchElements() {
-  //   return AnimatedContainer(
-  //     height: searchChannels.isEmpty ? 0 : 360.0,
-  //     duration: const Duration(milliseconds: 500),
-  //     decoration: BoxDecoration(
-  //         color: Theme.of(context).primaryColor.withGreen(212),
-  //         border: const Border(bottom: BorderSide(color: Colors.black26))),
-  //     child: NotificationListener<ScrollEndNotification>(
-  //       onNotification: (scrollDetails) {
-  //         if (scrollDetails.metrics.pixels ==
-  //             scrollDetails.metrics.maxScrollExtent) {
-  //           _loadMoreSearchResults();
-  //         }
-  //         return false;
-  //       },
-  //       child: searchChannels.isEmpty
-  //           ? const SizedBox.shrink()
-  //           : ListView.builder(
-  //               itemCount: searchChannels.length,
-  //               itemBuilder: (context, index) {
-  //                 return GestureDetector(
-  //                   onTap: () {
-  //                     setState(() {
-  //                       _newChannelInit(searchChannels[index].id);
-  //                       textSearchController.text = '';
-  //                       searchChannels.clear();
-  //                     });
-  //                   },
-  //                   child: Container(
-  //                     width: double.infinity,
-  //                     height: 80,
-  //                     margin: const EdgeInsets.symmetric(
-  //                         horizontal: 5, vertical: 5),
-  //                     padding: const EdgeInsets.symmetric(
-  //                         horizontal: 15, vertical: 10),
-  //                     decoration: BoxDecoration(
-  //                         color: Colors.white,
-  //                         borderRadius: BorderRadius.circular(80),
-  //                         boxShadow: const [
-  //                           BoxShadow(
-  //                               color: Colors.black26,
-  //                               offset: Offset(0, 2),
-  //                               blurRadius: 3)
-  //                         ]),
-  //                     child: Row(
-  //                       mainAxisAlignment: MainAxisAlignment.start,
-  //                       crossAxisAlignment: CrossAxisAlignment.center,
-  //                       children: [
-  //                         BuildProfileImg(
-  //                           imgUrl: searchChannels[index].profilePictureUrl,
-  //                           size: 60,
-  //                         ),
-  //                         const SizedBox(
-  //                           width: 7,
-  //                         ),
-  //                         Expanded(
-  //                             child: Column(
-  //                           mainAxisAlignment: MainAxisAlignment.center,
-  //                           crossAxisAlignment: CrossAxisAlignment.start,
-  //                           children: [
-  //                             Text(
-  //                               searchChannels[index].title,
-  //                               maxLines: 1,
-  //                               overflow: TextOverflow.ellipsis,
-  //                               style: const TextStyle(
-  //                                   color: Colors.black,
-  //                                   fontSize: 18,
-  //                                   fontWeight: FontWeight.bold,
-  //                                   shadows: [
-  //                                     Shadow(
-  //                                         color: Colors.black26,
-  //                                         offset: Offset(0, 2),
-  //                                         blurRadius: 2)
-  //                                   ]),
-  //                             ),
-  //                             Text(
-  //                               searchChannels[index].description,
-  //                               maxLines: 2,
-  //                               overflow: TextOverflow.ellipsis,
-  //                               style: TextStyle(
-  //                                   color: Colors.grey[400], fontSize: 12),
-  //                             )
-  //                           ],
-  //                         )),
-  //                         const SizedBox(
-  //                           width: 7,
-  //                         ),
-  //                         IconButton(
-  //                             onPressed: () {},
-  //                             icon: const Icon(
-  //                               Icons.add,
-  //                               size: 30,
-  //                               color: Colors.black54,
-  //                             ))
-  //                       ],
-  //                     ),
-  //                   ),
-  //                 );
-  //               }),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -329,17 +107,9 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                 ..repeat(),
             ))
           : RefreshIndicator(
-              onRefresh: () => _updateVideosList(),
+              onRefresh: c.updateVideosList,
               child: NotificationListener<ScrollNotification>(
-                onNotification: (ScrollNotification scrollDetails) {
-                  // if (!_needMoreVideos &&
-                  //     _channel.videos!.length != _channel.videoCount &&
-                  //     scrollDetails.metrics.pixels ==
-                  //         scrollDetails.metrics.maxScrollExtent) {
-                  //   _loadMoreVideos();
-                  // }
-                  return false;
-                },
+                onNotification: c.onScrollNotification,
                 child: (m.channel.videos.isEmpty)
                     ? const SizedBox.shrink()
                     : ListView.builder(
@@ -348,6 +118,8 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                             horizontal: 5, vertical: 5),
                         itemBuilder: (context, index) {
                           Video video = m.channel.videos[index];
+
+                          ///TODO: use select + add loading indicator to the end
                           return VideosBuilder(
                             video: video,
                             channel: m.channel,
@@ -370,14 +142,9 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ///TODO(ivn): add model inside
-                      Container(
-                        width: 100,
-                        height: 100,
-                      ), // заглушка
-                      // _menuAddFavSearch(),
-                      // _buildSearchElements(),
+                    children: const [
+                      SearchAndAddFavorite(),
+                      BuildSearchElements()
                     ],
                   ),
                 ),
@@ -405,9 +172,8 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                         ))
                       : Column(
                           children: const [
-                            ///TODO(ivn): add model inside
-                            // _menuAddFavSearch(),
-                            // _buildSearchElements(),
+                            SearchAndAddFavorite(),
+                            BuildSearchElements(),
                             BuildFavorites(),
                           ],
                         ),
