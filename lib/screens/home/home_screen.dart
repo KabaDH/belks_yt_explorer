@@ -1,5 +1,6 @@
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/screens/home/home_screen_c.dart';
+import 'package:belks_tube/screens/home/widgets/build_favorites.dart';
 import 'package:belks_tube/screens/info_screen.dart';
 import 'package:belks_tube/services/providers.dart';
 import 'package:belks_tube/widgets/widgets.dart';
@@ -84,192 +85,6 @@ class HomeScreenState extends ConsumerState<HomeScreen>
   //   });
   // }
 
-  // //Безопасная заглушка, если видео не прогрузились (или нет видео) не показываем когда вышло последнее видео
-  // String _lastUpdatedVideo(int index) {
-  //   try {
-  //     String lastVideoTime =
-  //         'Updated ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(favoriteChannels[index].videos![0].publishedAt).toLocal())}';
-  //     return lastVideoTime;
-  //   } catch (e) {
-  //     return '';
-  //   }
-  // }
-
-  //элементы drawer
-  // _buildFavorites() {
-  //   return Expanded(
-  //     child: Container(
-  //       color: Theme.of(context).primaryColor,
-  //       child: favoriteChannels.isEmpty
-  //           ? const SizedBox.shrink()
-  //           : ListView.builder(
-  //               itemCount: favoriteChannels.length,
-  //               itemBuilder: (context, index) {
-  //                 return GestureDetector(
-  //                   onTap: () {
-  //                     setState(() {
-  //                       _channel = favoriteChannels[index];
-  //                     });
-  //                   },
-  //                   child: Container(
-  //                     width: double.infinity,
-  //                     height: 80,
-  //                     margin: const EdgeInsets.symmetric(
-  //                         horizontal: 5, vertical: 5),
-  //                     padding: const EdgeInsets.symmetric(
-  //                         horizontal: 15, vertical: 10),
-  //                     decoration: BoxDecoration(
-  //                         color: Colors.white,
-  //                         borderRadius: BorderRadius.circular(80),
-  //                         boxShadow: const [
-  //                           BoxShadow(
-  //                               color: Colors.black26,
-  //                               offset: Offset(0, 2),
-  //                               blurRadius: 3)
-  //                         ]),
-  //                     child: Row(
-  //                       mainAxisAlignment: MainAxisAlignment.start,
-  //                       crossAxisAlignment: CrossAxisAlignment.center,
-  //                       children: [
-  //                         BuildProfileImg(
-  //                             imgUrl: favoriteChannels[index].profilePictureUrl,
-  //                             size: 60),
-  //                         const SizedBox(
-  //                           width: 7,
-  //                         ),
-  //                         Expanded(
-  //                             child: Column(
-  //                           mainAxisAlignment: MainAxisAlignment.center,
-  //                           crossAxisAlignment: CrossAxisAlignment.start,
-  //                           children: [
-  //                             Text(
-  //                               favoriteChannels[index].title,
-  //                               maxLines: 1,
-  //                               overflow: TextOverflow.ellipsis,
-  //                               style: const TextStyle(
-  //                                   color: Colors.black,
-  //                                   fontSize: 18,
-  //                                   fontWeight: FontWeight.bold,
-  //                                   shadows: [
-  //                                     Shadow(
-  //                                         color: Colors.black26,
-  //                                         offset: Offset(0, 2),
-  //                                         blurRadius: 2)
-  //                                   ]),
-  //                             ),
-  //                             Text(
-  //                               _lastUpdatedVideo(index),
-  //                               style: TextStyle(
-  //                                   color: Colors.grey[400], fontSize: 12),
-  //                             )
-  //                           ],
-  //                         )),
-  //                         const SizedBox(
-  //                           width: 7,
-  //                         ),
-  //                         IconButton(
-  //                             onPressed: () =>
-  //                                 _removeDialog(favoriteChannels[index]),
-  //                             icon: const Icon(
-  //                               Icons.cancel,
-  //                               size: 30,
-  //                               color: Colors.black54,
-  //                             ))
-  //                       ],
-  //                     ),
-  //                   ),
-  //                 );
-  //               }),
-  //     ),
-  //   );
-  // }
-
-  //Button remove fav pressed
-  // Future<void> _removeDialog(Channel c) async {
-  //   return showDialog<void>(
-  //       context: context,
-  //       barrierDismissible: false, //user must tap the button
-  //       builder: (context) {
-  //         return AlertDialog(
-  //           title: const Text('Confirmation require'),
-  //           content: SingleChildScrollView(
-  //             child: RichText(
-  //               text: TextSpan(
-  //                   text: 'Remove channel ',
-  //                   style: const TextStyle(color: Colors.black, fontSize: 16),
-  //                   children: [
-  //                     TextSpan(
-  //                         text: c.title,
-  //                         style: const TextStyle(
-  //                             color: Colors.black,
-  //                             fontWeight: FontWeight.bold,
-  //                             fontSize: 20)),
-  //                     const TextSpan(
-  //                         text: ' from list?',
-  //                         style: TextStyle(color: Colors.black, fontSize: 16))
-  //                   ]),
-  //             ),
-  //           ),
-  //           actions: [
-  //             TextButton(
-  //                 onPressed: () =>
-  //                     {Navigator.of(context).pop(), _channelRemoval(c)},
-  //                 child: const Text(
-  //                   'Yes',
-  //                   style: TextStyle(color: Colors.black),
-  //                 )),
-  //             TextButton(
-  //                 onPressed: () => Navigator.of(context).pop(),
-  //                 child: const Text(
-  //                   'No',
-  //                   style: TextStyle(color: Colors.black),
-  //                 )),
-  //           ],
-  //         );
-  //       });
-  // }
-
-  // Future<void> _channelRemoval(Channel c) async {
-  //   List<Channel> favChannels;
-  //   favChannels = favoriteChannels;
-  //   SharedPreferences prefs = await _prefs;
-  //
-  //   if (c != _channel) {
-  //     setState(() {
-  //       favoriteChannels.remove(c);
-  //       favoriteChannelsID.remove(c.id);
-  //       prefs.setStringList('favoriteChannelsID', favoriteChannelsID);
-  //     });
-  //   } else {
-  //     favChannels.remove(c);
-  //     if (favChannels.isNotEmpty) {
-  //       setState(() {
-  //         _isLoading = true;
-  //         favoriteChannels = favChannels;
-  //         favoriteChannelsID.remove(c.id);
-  //         _channel = favoriteChannels[0];
-  //         prefs.setStringList('favoriteChannelsID', favoriteChannelsID);
-  //         _isLoading = false;
-  //       });
-  //     } else {
-  //       Channel tmpChannel;
-  //       tmpChannel =
-  //           await APIService.instance.fetchChannel(channelId: channelId);
-  //
-  //       setState(() {
-  //         _isLoading = true;
-  //
-  //         prefs.remove('defChannelId');
-  //         prefs.remove('favoriteChannelsID');
-  //
-  //         favoriteChannels.remove(c);
-  //         favoriteChannelsID.remove(c.id);
-  //         _channel = tmpChannel;
-  //         _isLoading = false;
-  //       });
-  //     }
-  //   }
-  // }
 
   // _newChannelInit(String c) async {
   //   bool ping = await APIService.instance.pingChannel(channelId: c);
@@ -589,15 +404,11 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                             ..repeat(),
                         ))
                       : Column(
-                          children: [
+                          children: const [
                             ///TODO(ivn): add model inside
-                            Container(
-                              width: 100,
-                              height: 100,
-                            ), // заглушка
                             // _menuAddFavSearch(),
                             // _buildSearchElements(),
-                            // _buildFavorites(),
+                            BuildFavorites(),
                           ],
                         ),
                 ),

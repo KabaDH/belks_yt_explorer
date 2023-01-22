@@ -4,6 +4,8 @@ import 'package:belks_tube/models/models.dart';
 import 'package:belks_tube/models/videos_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
+import 'package:belks_tube/core/consts.dart';
 
 part 'videos_dto.g.dart';
 
@@ -59,7 +61,7 @@ class VideoDto {
   final String? title;
   final Map<String, dynamic>? thumbnails;
   final String? channelTitle;
-  final Map<String, dynamic>? publishedAt;
+  final String? publishedAt;
 
   factory VideoDto.fromJson(Map<String, dynamic> json) =>
       _$VideoDtoFromJson(json);
@@ -85,11 +87,14 @@ extension VideosResponseDtoX on VideosResponseDto {
             final snippet = e.snippet;
 
             return Video(
-                id: snippet?.resourceId?['videoId'] ?? '',
-                title: snippet?.title ?? '',
-                thumbnailUrl: snippet?.thumbnails?['high']['url'] ?? '',
-                channelTitle: snippet?.channelTitle ?? '',
-                publishedAt: snippet?.publishedAt?.toString() ?? '');
+              id: snippet?.resourceId?['videoId'] ?? '',
+              title: snippet?.title ?? '',
+              thumbnailUrl: snippet?.thumbnails?['high']['url'] ?? '',
+              channelTitle: snippet?.channelTitle ?? '',
+              publishedAt:
+                  DateTime.parse(snippet?.publishedAt ?? invalidDate.toString())
+                      .toLocal(),
+            );
           }).toList() ??
           [];
 

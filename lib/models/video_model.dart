@@ -10,7 +10,7 @@ class Video with _$Video {
       required String title,
       required String thumbnailUrl,
       required String channelTitle,
-      required String publishedAt}) = _Video;
+      required DateTime publishedAt}) = _Video;
 
   factory Video.fromMap(Map<String, dynamic> snippet) {
     return Video(
@@ -18,7 +18,7 @@ class Video with _$Video {
       title: snippet['title'],
       thumbnailUrl: snippet['thumbnails']['high']['url'],
       channelTitle: snippet['channelTitle'],
-      publishedAt: snippet['publishedAt'].toString(),
+      publishedAt: snippet['publishedAt'],
     );
   }
 

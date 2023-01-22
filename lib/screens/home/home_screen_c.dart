@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/data/repo/repo.dart';
 import 'package:belks_tube/models/channel_model.dart';
 import 'package:belks_tube/screens/home/home_screen_model.dart';
@@ -27,17 +28,20 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
     debugPrint('💡HomeScreenController.initChannel :: loading');
     setIsLoading(true);
     await initChannels();
-    // await initMainChannel();
     setIsLoading(false);
+    setFavChannelsIsLoading(false);
   }
 
   void addChannelToFavorites(Channel channel) {
     state =
         state.copyWith(favoriteChannels: [...state.favoriteChannels, channel]);
+    repo.setFavoriteChannelsIds(state.favoriteChannelsIds);
   }
 
-  void setNewMainChannel(Channel channel) =>
-      state = state.copyWith(channel: channel);
+  void setNewMainChannel(Channel channel) {
+    repo.setMainChannel(channel);
+    state = state.copyWith(channel: channel);
+  }
 
   Future<void> fetchChannel(
       {required String channelId, bool isMainChannel = false}) async {
@@ -69,6 +73,9 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
 
   void setIsLoading(bool v) => state = state.copyWith(isLoading: v);
 
+  void setFavChannelsIsLoading(bool v) =>
+      state = state.copyWith(favChannelsLoading: v);
+
   // /// load def Channel
   // Future<void> initMainChannel() async {
   //   final mainChannelId = repo.getMainChannelId();
@@ -82,9 +89,40 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
 
     state = state.copyWith(
         defChannelId: mainChannelId, favoriteChannelsIds: favoriteChannelIds);
-    for (var channelId in state.favoriteChannelsIds) {
+
+    // 1 - load main channel
+    fetchChannel(channelId: mainChannelId, isMainChannel: true);
+
+    // 2 - load the rest of channels
+    for (final channelId
+        in state.favoriteChannelsIds.where((e) => e != mainChannelId)) {
       fetchChannel(
           channelId: channelId, isMainChannel: channelId == mainChannelId);
+    }
+  }
+
+  Future<void> removeChannel(Channel c) async {
+    var favChannels = state.favoriteChannels.toList();
+    var favChannelsIds = state.favoriteChannelsIds.toList();
+
+    favChannels.remove(c);
+    favChannelsIds.remove(c.id);
+    repo.setFavoriteChannelsIds(favChannelsIds);
+
+    state = state.copyWith(
+      favoriteChannels: favChannels,
+      favoriteChannelsIds: favChannelsIds,
+    );
+
+    if (c.id == state.channel.id) {
+      if (favChannels.isNotEmpty) {
+        setNewMainChannel(favChannels[0]);
+      } else {
+        setIsLoading(true);
+        await fetchChannel(
+            channelId: AppConfig.defChannel, isMainChannel: true);
+        setIsLoading(false);
+      }
     }
   }
 }

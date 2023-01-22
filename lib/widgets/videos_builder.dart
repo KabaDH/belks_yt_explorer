@@ -16,7 +16,7 @@ class VideosBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime posted = DateTime.parse(video.publishedAt).toLocal();
+    DateTime posted = video.publishedAt;
     String postedDate = DateFormat('dd/MM/yyyy HH:mm').format(posted);
     final postedAgo = DateTime.now().difference(posted);
 

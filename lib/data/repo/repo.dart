@@ -27,7 +27,14 @@ class Repo implements BaseRepo {
   String getMainChannelId() => _localRepo.getDefChannelId();
 
   @override
+  void setMainChannel(Channel channel) => _localRepo.setMainChannel(channel);
+
+  @override
   List<String> getFavoriteChannelsIds() => _localRepo.getFavoriteChannelsIds();
+
+  @override
+  void setFavoriteChannelsIds(List<String> favChannelsIds) =>
+      _localRepo.setFavoriteChannelsIds(favChannelsIds);
 
   // Remote
   @override

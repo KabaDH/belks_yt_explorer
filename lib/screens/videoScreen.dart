@@ -109,7 +109,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     var popUpIsOpened = ref.watch(openPopupProvider);
     bool isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    DateTime posted = DateTime.parse(widget.video.publishedAt).toLocal();
+    DateTime posted = widget.video.publishedAt;
     String postedDate = DateFormat('dd/MM/yyyy HH:mm').format(posted);
     final postedAgo = DateTime.now().difference(posted);
 

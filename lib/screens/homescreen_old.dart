@@ -1,3 +1,4 @@
+import 'package:belks_tube/core/ext.dart';
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:belks_tube/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -128,7 +129,7 @@ class HomeScreenState extends ConsumerState<HomeScreen>
   String _lastUpdatedVideo(int index) {
     try {
       String lastVideoTime =
-          'Updated ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(favoriteChannels[index].videos![0].publishedAt).toLocal())}';
+          'Updated ${favoriteChannels[index].videos[0].publishedAt.convertDateTimeForUi()}';
       return lastVideoTime;
     } catch (e) {
       return '';

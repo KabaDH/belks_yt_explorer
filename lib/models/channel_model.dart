@@ -1,3 +1,4 @@
+import 'package:belks_tube/core/ext.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'models.dart';
@@ -44,4 +45,7 @@ class Channel with _$Channel {
 
   factory Channel.fromJson(Map<String, dynamic> json) =>
       _$ChannelFromJson(json);
+
+  String get lastPublishedAt =>
+      'Updated ${videos[0].publishedAt.convertDateTimeForUi() ?? ''}';
 }

@@ -9,6 +9,10 @@ abstract class BaseRepo {
 
   List<String> getFavoriteChannelsIds();
 
+  void setMainChannel(Channel channel);
+
+  void setFavoriteChannelsIds(List<String> favChannelsIds);
+
   // Remote
   Future<Either<DataFailures, Channel>> fetchChannel({
     required String channelId,
