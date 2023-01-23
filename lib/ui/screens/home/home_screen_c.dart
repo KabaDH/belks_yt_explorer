@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:belks_tube/data/providers/app_config.dart';
+import 'package:belks_tube/data/config/app_config.dart';
 import 'package:belks_tube/data/repo/repo.dart';
 import 'package:belks_tube/domain/channel/channel_model.dart';
 import 'package:belks_tube/domain/video/video_model.dart';
@@ -193,6 +193,7 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
   }
 
   Future<void> fetchSearchResults(String input) async {
+    // If input changed, request new search results
     if (lastSearchRequest != input) {
       state = state.copyWith(searchChannels: []);
       _nextPageTokenSearch = null;
@@ -213,6 +214,7 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
     );
   }
 
+  /// TODO: replace SnackBar with toast
   initNewChannel(String channelId, BuildContext context) async {
     if (state.favoriteChannelsIds.contains(channelId)) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -220,6 +222,7 @@ class HomeScreenController extends StateNotifier<HomeScreenModel> {
         duration: Duration(seconds: 3),
       ));
     } else {
+      setIsLoading(true);
       fetchChannel(channelId: channelId, isMainChannel: true);
     }
   }

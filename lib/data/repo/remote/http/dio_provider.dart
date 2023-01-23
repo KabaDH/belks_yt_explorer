@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:belks_tube/data/providers/app_config.dart';
+import 'package:belks_tube/data/config/app_config.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

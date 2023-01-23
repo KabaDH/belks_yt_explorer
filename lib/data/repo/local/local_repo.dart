@@ -1,4 +1,4 @@
-import 'package:belks_tube/data/providers/app_config.dart';
+import 'package:belks_tube/data/config/app_config.dart';
 import 'package:belks_tube/data/repo/local/base_local_repository.dart';
 import 'package:belks_tube/data/repo/local/prefs_provider.dart';
 import 'package:belks_tube/domain/channel/channel_model.dart';

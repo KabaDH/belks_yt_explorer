@@ -1,4 +1,4 @@
-import 'package:belks_tube/data/providers/app_config.dart';
+import 'package:belks_tube/data/config/app_config.dart';
 import 'package:belks_tube/data/repo/local/prefs_provider.dart';
 import 'package:belks_tube/ui/screens/home/home_screen.dart';
 import 'package:belks_tube/ui/screens/privacy_screen.dart';

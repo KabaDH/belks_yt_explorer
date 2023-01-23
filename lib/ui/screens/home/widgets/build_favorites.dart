@@ -40,69 +40,84 @@ class _BuildFavoriteChannelElement extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Channel
     final m = ref.watch(
-        HomeScreenController.provider.select((v) => v.favoriteChannels[index]));
-    final c = ref.read(HomeScreenController.provider.notifier);
-
-    return GestureDetector(
-      onTap: () => c.setNewMainChannel(m),
-      child: Container(
-        width: double.infinity,
-        height: 80,
-        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(80),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, offset: Offset(0, 2), blurRadius: 3)
-            ]),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BuildProfileImg(imgUrl: m.profilePictureUrl, size: 60),
-            const SizedBox(
-              width: 7,
-            ),
-            Expanded(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  m.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                            blurRadius: 2)
-                      ]),
-                ),
-                Text(
-                  m.lastPublishedAt,
-                  style: TextStyle(color: Colors.grey[400], fontSize: 12),
-                )
-              ],
-            )),
-            const SizedBox(width: 7),
-            IconButton(
-                onPressed: () => _removeDialog(m, context, c.removeChannel),
-                icon: const Icon(
-                  Icons.cancel,
-                  size: 30,
-                  color: Colors.black54,
-                ))
-          ],
-        ),
+      HomeScreenController.provider.select(
+        (v) {
+          // to avoid range error upon deletion
+          try {
+            return v.favoriteChannels[index];
+          } catch (_) {
+            return null;
+          }
+        },
       ),
     );
+    final c = ref.read(HomeScreenController.provider.notifier);
+
+    return m == null
+        ? const SizedBox.shrink()
+        : GestureDetector(
+            onTap: () => c.setNewMainChannel(m),
+            child: Container(
+              width: double.infinity,
+              height: 80,
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(80),
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 2),
+                        blurRadius: 3)
+                  ]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BuildProfileImg(imgUrl: m.profilePictureUrl, size: 60),
+                  const SizedBox(
+                    width: 7,
+                  ),
+                  Expanded(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        m.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                  color: Colors.black26,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2)
+                            ]),
+                      ),
+                      Text(
+                        m.lastPublishedAt,
+                        style: TextStyle(color: Colors.grey[400], fontSize: 12),
+                      )
+                    ],
+                  )),
+                  const SizedBox(width: 7),
+                  IconButton(
+                      onPressed: () =>
+                          _removeDialog(m, context, c.removeChannel),
+                      icon: const Icon(
+                        Icons.cancel,
+                        size: 30,
+                        color: Colors.black54,
+                      ))
+                ],
+              ),
+            ),
+          );
   }
 }
 
