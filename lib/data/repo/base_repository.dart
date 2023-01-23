@@ -1,7 +1,7 @@
-import 'package:belks_tube/domain/data_failures.dart';
-import 'package:belks_tube/models/channel_model.dart';
-import 'package:belks_tube/models/models.dart';
-import 'package:belks_tube/models/videos_model.dart';
+import 'package:belks_tube/domain/channel/channel_model.dart';
+import 'package:belks_tube/domain/data_failures/data_failures.dart';
+import 'package:belks_tube/domain/search/search_model.dart';
+import 'package:belks_tube/domain/videos/videos_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class BaseRepo {
@@ -25,12 +25,6 @@ abstract class BaseRepo {
     String? pageToken,
   });
 
-  Future<Either<DataFailures, List<SearchChannel>>> fetchSearchResults(
+  Future<Either<DataFailures, SearchResult>> fetchSearchResults(
       {required String searchRequest, int? maxResults, String? pageToken});
-
-  Future<Either<DataFailures, String>> pingChannel(
-      {required String channel});
-
-  Future<Either<DataFailures, String>> pingChannelUserName(
-      {required String userName});
 }

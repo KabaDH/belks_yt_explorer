@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:belks_tube/data/providers/app_config.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dio_provider.g.dart';

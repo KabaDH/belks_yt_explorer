@@ -1,4 +1,4 @@
-import 'package:belks_tube/domain/data_failures.dart';
+import 'package:belks_tube/domain/data_failures/data_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,7 +20,8 @@ Either<DataFailures, R> safeToDomain<R>(
   } on Error catch (e) {
     return left(DataFailures.error('Error: ${e.toString()}'));
   } on CheckedFromJsonException catch (e) {
-    return left(DataFailures.error('CheckedFromJsonException: ${e.toString()}'));
+    return left(
+        DataFailures.error('CheckedFromJsonException: ${e.toString()}'));
   } on Exception catch (e) {
     return left(DataFailures.error('Exception: ${e.toString()}'));
   }
@@ -38,4 +39,9 @@ mixin RepositoryImplMixin {
       return left(DataFailures.error('safeFunc Exception ${e.toString()}'));
     }
   }
+}
+
+void printError(String method, String variable, DataFailures l) {
+  debugPrint('💡$method :: $variable is Left :'
+      ' ${l.failedValue}');
 }

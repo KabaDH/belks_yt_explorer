@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:belks_tube/models/models.dart';
+import 'package:belks_tube/domain/channel/channel_model.dart';
+import 'package:belks_tube/domain/search/search_model.dart';
+import 'package:belks_tube/domain/video/video_model.dart';
 import 'package:belks_tube/utilites/keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;

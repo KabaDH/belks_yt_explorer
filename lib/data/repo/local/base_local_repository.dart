@@ -1,4 +1,5 @@
-import 'package:belks_tube/models/channel_model.dart';
+
+import 'package:belks_tube/domain/channel/channel_model.dart';
 
 abstract class BaseLocalRepo {
   String getDefChannelId();

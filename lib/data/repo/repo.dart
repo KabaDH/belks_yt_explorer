@@ -1,10 +1,10 @@
 import 'package:belks_tube/data/repo/base_repository.dart';
 import 'package:belks_tube/data/repo/local/local_repo.dart';
 import 'package:belks_tube/data/repo/remote/remote_repo.dart';
-import 'package:belks_tube/domain/data_failures.dart';
-import 'package:belks_tube/models/channel_model.dart';
-import 'package:belks_tube/models/search_model.dart';
-import 'package:belks_tube/models/videos_model.dart';
+import 'package:belks_tube/domain/channel/channel_model.dart';
+import 'package:belks_tube/domain/data_failures/data_failures.dart';
+import 'package:belks_tube/domain/search/search_model.dart';
+import 'package:belks_tube/domain/videos/videos_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -22,7 +22,7 @@ class Repo implements BaseRepo {
   LocalRepo get _localRepo => _ref.read(localRepoProvider);
   RemoteRepo get _remoteRepo => _ref.read(remoteRepoProvider);
 
-  // Local
+  //============================ LOCAL =============================\\
   @override
   String getMainChannelId() => _localRepo.getDefChannelId();
 
@@ -36,7 +36,7 @@ class Repo implements BaseRepo {
   void setFavoriteChannelsIds(List<String> favChannelsIds) =>
       _localRepo.setFavoriteChannelsIds(favChannelsIds);
 
-  // Remote
+  //============================ REMOTE ============================\\
   @override
   Future<Either<DataFailures, Channel>> fetchChannel(
           {required String channelId}) =>
@@ -51,7 +51,7 @@ class Repo implements BaseRepo {
           playlistId: playlistId, maxResults: maxResults, pageToken: pageToken);
 
   @override
-  Future<Either<DataFailures, List<SearchChannel>>> fetchSearchResults(
+  Future<Either<DataFailures, SearchResult>> fetchSearchResults(
           {required String searchRequest,
           int? maxResults,
           String? pageToken}) async =>
@@ -59,14 +59,4 @@ class Repo implements BaseRepo {
           searchRequest: searchRequest,
           maxResults: maxResults,
           pageToken: pageToken);
-
-  @override
-  Future<Either<DataFailures, String>> pingChannel(
-          {required String channel}) async =>
-      await _remoteRepo.pingChannel(channel: channel);
-
-  @override
-  Future<Either<DataFailures, String>> pingChannelUserName(
-          {required String userName}) async =>
-      await _remoteRepo.pingChannelUserName(userName: userName);
 }
