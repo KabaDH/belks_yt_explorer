@@ -43,6 +43,9 @@ class Repo implements BaseRepo {
   void setUserCanPlayBlackScreen(bool v) =>
       _localRepo.setUserCanPlayBlackScreen(v);
 
+  @override
+  void acceptPrivacy() => _localRepo.acceptPrivacy();
+
   //============================ REMOTE ============================\\
   @override
   Future<Either<DataFailures, Channel>> fetchChannel(

@@ -1,23 +1,18 @@
 import 'dart:io' show Platform;
+import 'package:belks_tube/data/repo/repo.dart';
+import 'package:belks_tube/ui/screens/home/home_screen.dart';
 import 'package:belks_tube/ui/shared/widgets.dart';
 import 'package:belks_tube/ui/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'home/home_screen.dart';
-
-class PrivacyScreen extends StatelessWidget {
+class PrivacyScreen extends ConsumerWidget {
   final bool acceptedPrivacy;
 
-  PrivacyScreen({Key? key, required this.acceptedPrivacy}) : super(key: key);
-  final Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-
-  acceptAll() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('PrivatePolicyAccepted', true);
-  }
+  const PrivacyScreen({Key? key, required this.acceptedPrivacy})
+      : super(key: key);
 
   //For url_launcher
   String? encodeQueryParameters(Map<String, String> params) {
@@ -28,7 +23,7 @@ class PrivacyScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
       path: 'io.levk@gmail.com',
@@ -178,12 +173,12 @@ class PrivacyScreen extends StatelessWidget {
                   ? const SizedBox.shrink()
                   : TextButton(
                       onPressed: () {
-                        acceptAll();
+                        ref.read(repoProvider).acceptPrivacy();
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (_) => const HomeScreen()));
                       },
                       style: TextButton.styleFrom(
-                          primary: Colors.white,
+                          foregroundColor: Colors.white,
                           backgroundColor: Colors.green,
                           textStyle: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
@@ -205,7 +200,7 @@ class PrivacyScreen extends StatelessWidget {
                         }
                       },
                       style: TextButton.styleFrom(
-                          primary: Colors.white,
+                          foregroundColor: Colors.white,
                           backgroundColor: Colors.redAccent,
                           textStyle: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),

@@ -18,6 +18,8 @@ abstract class BaseRepo {
 
   void setUserCanPlayBlackScreen(bool v);
 
+  void acceptPrivacy();
+
   // Remote
   Future<Either<DataFailures, Channel>> fetchChannel({
     required String channelId,

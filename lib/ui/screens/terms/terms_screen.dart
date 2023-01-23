@@ -3,15 +3,14 @@ import 'package:belks_tube/ui/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class TermsOfUse extends StatelessWidget {
-  TermsOfUse({Key? key}) : super(key: key);
-
-  final Uri youtubeTermsOfServiceUri =
-      Uri.parse('https://www.youtube.com/t/terms');
+  const TermsOfUse({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Uri youtubeTermsOfServiceUri =
+        Uri.parse('https://www.youtube.com/t/terms');
+
     return Scaffold(
         floatingActionButton: floatingActionButton(context),
         body: CustomScrollView(
@@ -53,7 +52,6 @@ class TermsOfUse extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ));
   }

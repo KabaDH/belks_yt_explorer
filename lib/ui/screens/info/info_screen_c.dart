@@ -1,9 +1,8 @@
 import 'package:belks_tube/data/config/app_config.dart';
-import 'package:belks_tube/data/repo/repo.dart';
 import 'package:belks_tube/domain/user/user_model.dart';
 import 'package:belks_tube/services/providers/user.dart';
-import 'package:belks_tube/ui/screens/privacy_screen.dart';
-import 'package:belks_tube/ui/screens/terms_screen.dart';
+import 'package:belks_tube/ui/screens/privacy/privacy_screen.dart';
+import 'package:belks_tube/ui/screens/terms/terms_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,8 +20,8 @@ class InfoScreenController extends StateNotifier<User> {
   String get appBuild => AppConfig.instance.buildNumber;
 
   final Map<String, Widget> screens = {
-    'Privacy Policy': PrivacyScreen(acceptedPrivacy: true),
-    'Terms of Use': TermsOfUse(), // Terms of Use
+    'Privacy Policy': const PrivacyScreen(acceptedPrivacy: true),
+    'Terms of Use': const TermsOfUse(), // Terms of Use
   };
 
   void init() {

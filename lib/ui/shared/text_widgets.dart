@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-paragraf(String text, {bool noSpace = false}) {
+SliverPadding paragraf(String text, {bool noSpace = false}) {
   return SliverPadding(
     padding: const EdgeInsets.symmetric(horizontal: 15.0),
     sliver: SliverToBoxAdapter(
@@ -14,7 +14,7 @@ paragraf(String text, {bool noSpace = false}) {
   );
 }
 
-header(String text) {
+SliverPadding header(String text) {
   return SliverPadding(
     padding: const EdgeInsets.symmetric(horizontal: 15.0),
     sliver: SliverToBoxAdapter(

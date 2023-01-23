@@ -12,4 +12,6 @@ abstract class BaseLocalRepo {
   bool getUser();
 
   void setUserCanPlayBlackScreen(bool v);
+
+  void acceptPrivacy();
 }

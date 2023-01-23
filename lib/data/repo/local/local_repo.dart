@@ -50,4 +50,9 @@ class LocalRepo implements BaseLocalRepo {
   @override
   void setUserCanPlayBlackScreen(bool v) =>
       prefs.setBool('canPlayBlackScreen', v);
+
+  @override
+  void acceptPrivacy() {
+    prefs.setBool('PrivatePolicyAccepted', true);
+  }
 }

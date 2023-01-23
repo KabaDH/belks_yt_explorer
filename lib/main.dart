@@ -1,7 +1,7 @@
 import 'package:belks_tube/data/config/app_config.dart';
 import 'package:belks_tube/data/repo/local/prefs_provider.dart';
 import 'package:belks_tube/ui/screens/home/home_screen.dart';
-import 'package:belks_tube/ui/screens/privacy_screen.dart';
+import 'package:belks_tube/ui/screens/privacy/privacy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'data/repo/remote/http/dio_provider.dart';
@@ -38,7 +38,6 @@ void main() async {
 }
 
 class MyApp extends ConsumerWidget {
-  // final bool acceptedPrivacy;
 
   const MyApp({Key? key}) : super(key: key);
 
