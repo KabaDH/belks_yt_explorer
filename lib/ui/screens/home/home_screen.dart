@@ -1,7 +1,6 @@
-import 'package:belks_tube/data/config/app_config.dart';
 import 'package:belks_tube/domain/video/video_model.dart';
 import 'package:belks_tube/ui/screens/home/home_screen_c.dart';
-import 'package:belks_tube/ui/screens/info_screen.dart';
+import 'package:belks_tube/ui/screens/info/info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:belks_tube/ui/shared/widgets.dart';
@@ -50,11 +49,8 @@ class HomeScreenState extends ConsumerState<HomeScreen>
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => InfoScreen(
-                          appBuild: AppConfig.instance.buildNumber,
-                          appVersion: AppConfig.instance.version,
-                        )));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const InfoScreen()));
               },
               icon: const Icon(Icons.settings))
         ],

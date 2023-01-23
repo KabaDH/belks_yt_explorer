@@ -10,4 +10,16 @@ class Styles {
     color: Colors.blue,
     fontWeight: FontWeight.w800,
   );
+
+  static const infoBlueTextStyle = TextStyle(
+    fontSize: 14,
+    color: Colors.blue,
+    fontWeight: FontWeight.normal,
+  );
+  static const infoBlackTextStyle = TextStyle(
+    fontSize: 14,
+    color: Colors.black,
+    fontWeight: FontWeight.normal,
+  );
+
 }

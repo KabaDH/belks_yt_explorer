@@ -41,7 +41,13 @@ class LocalRepo implements BaseLocalRepo {
       prefs.setString('defChannelId', channel.id);
 
   @override
-  void setFavoriteChannelsIds(List<String> favChannelsIds) {
-    prefs.setStringList('favoriteChannelsID', favChannelsIds);
-  }
+  void setFavoriteChannelsIds(List<String> favChannelsIds) =>
+      prefs.setStringList('favoriteChannelsID', favChannelsIds);
+
+  @override
+  bool getUser() => prefs.getBool('canPlayBlackScreen') ?? true;
+
+  @override
+  void setUserCanPlayBlackScreen(bool v) =>
+      prefs.setBool('canPlayBlackScreen', v);
 }

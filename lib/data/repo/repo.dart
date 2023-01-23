@@ -36,6 +36,13 @@ class Repo implements BaseRepo {
   void setFavoriteChannelsIds(List<String> favChannelsIds) =>
       _localRepo.setFavoriteChannelsIds(favChannelsIds);
 
+  @override
+  bool getUser() => _localRepo.getUser();
+
+  @override
+  void setUserCanPlayBlackScreen(bool v) =>
+      _localRepo.setUserCanPlayBlackScreen(v);
+
   //============================ REMOTE ============================\\
   @override
   Future<Either<DataFailures, Channel>> fetchChannel(

@@ -14,6 +14,10 @@ abstract class BaseRepo {
 
   void setFavoriteChannelsIds(List<String> favChannelsIds);
 
+  bool getUser();
+
+  void setUserCanPlayBlackScreen(bool v);
+
   // Remote
   Future<Either<DataFailures, Channel>> fetchChannel({
     required String channelId,

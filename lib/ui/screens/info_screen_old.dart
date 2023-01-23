@@ -1,4 +1,4 @@
-import 'package:belks_tube/services/providers.dart';
+import 'package:belks_tube/services/providers/user.dart';
 import 'package:belks_tube/ui/screens/privacy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -32,7 +32,6 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
   };
 
   final Uri flutterUri = Uri.parse('https://flutter.dev');
-
 
   menuElement(String title, void Function() onTap) {
     return Padding(
@@ -86,42 +85,45 @@ class _InfoScreenState extends ConsumerState<InfoScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            (Platform.isAndroid) ? Padding(
-              padding: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              child: Card(
-                color: Colors.white,
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                       const Flexible(
-                         flex: 3,
-                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            'Play sound when the screen is turned off ',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                      ),
-                       ),
-                      Flexible(
-                        flex: 1,
-                        child: Center(
-                          child: Switch(
-                            onChanged: (bool value) {
-                              ref
-                                  .read(userProvider.notifier)
-                                  .copyWith(canPlayBlackScreen: value);
-                            },
-                            value: user.canPlayBlackScreen,
-                          ),
-                        ),
-                      ),
-                    ]),
-              ),
-            ) : const SizedBox.shrink(),
+            (Platform.isAndroid)
+                ? Padding(
+                    padding:
+                        const EdgeInsets.only(left: 15, top: 10, right: 15),
+                    child: Card(
+                      color: Colors.white,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Flexible(
+                              flex: 3,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  'Play sound when the screen is turned off ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: Center(
+                                child: Switch(
+                                  onChanged: (bool value) {
+                                    ref
+                                        .read(userProvider.notifier)
+                                        .setCanPlayBlackScreen(value);
+                                  },
+                                  value: user.canPlayBlackScreen,
+                                ),
+                              ),
+                            ),
+                          ]),
+                    ),
+                  )
+                : const SizedBox.shrink(),
             const Spacer(),
             ...screens
                 .map((key, value) => MapEntry(

@@ -8,4 +8,8 @@ abstract class BaseLocalRepo {
   void setMainChannel(Channel channel);
 
   void setFavoriteChannelsIds(List<String> favChannelsIds);
+
+  bool getUser();
+
+  void setUserCanPlayBlackScreen(bool v);
 }

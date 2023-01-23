@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:belks_tube/domain/channel/channel_model.dart';
 import 'package:belks_tube/domain/video/video_model.dart';
+import 'package:belks_tube/services/providers/open_popup.dart';
+import 'package:belks_tube/services/providers/user.dart';
 import 'package:belks_tube/ui/shared/widgets.dart';
 import 'package:screen_state/screen_state.dart';
-import 'package:belks_tube/services/providers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
@@ -42,8 +42,7 @@ class VideoScreenState extends ConsumerState<VideoScreen>
     super.initState();
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
     //     overlays: []); //We can turn off top system UI
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: []);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     WidgetsBinding.instance.addObserver(this);
     controller = YoutubePlayerController(
         initialVideoId: widget.video.id,
